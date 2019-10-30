@@ -19,6 +19,15 @@
 		0EE9A0742369781700736A8E /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A0732369781700736A8E /* ActivityIndicator.swift */; };
 		0EE9A0772369792900736A8E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A0762369792900736A8E /* ProgressView.swift */; };
 		0EE9A07923697A6C00736A8E /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A07823697A6B00736A8E /* UIViewExtensions.swift */; };
+		0EE9A07B23697E3B00736A8E /* BaseETNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A07A23697E3B00736A8E /* BaseETNavigation.swift */; };
+		0EE9A07E23697E9A00736A8E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A07D23697E9A00736A8E /* Color.swift */; };
+		0EE9A08423697FA600736A8E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08323697FA600736A8E /* SettingViewController.swift */; };
+		0EE9A08623697FDB00736A8E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08523697FDB00736A8E /* HistoryViewController.swift */; };
+		0EE9A08823697FF200736A8E /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08723697FF200736A8E /* TranslateViewController.swift */; };
+		0EE9A08A2369806400736A8E /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A0892369806400736A8E /* TabbarViewController.swift */; };
+		0EE9A08C2369845200736A8E /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08B2369845200736A8E /* Reusable.swift */; };
+		0EE9A08E2369847000736A8E /* ETStoryboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08D2369847000736A8E /* ETStoryboards.swift */; };
+		0EE9A0902369856400736A8E /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08F2369856400736A8E /* Operators.swift */; };
 		341FB8BC6EB47A229DB08D38 /* Pods_ET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D2AE4299A2CDB2889076CA /* Pods_ET.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +46,15 @@
 		0EE9A0732369781700736A8E /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		0EE9A0762369792900736A8E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		0EE9A07823697A6B00736A8E /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		0EE9A07A23697E3B00736A8E /* BaseETNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseETNavigation.swift; sourceTree = "<group>"; };
+		0EE9A07D23697E9A00736A8E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		0EE9A08323697FA600736A8E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0EE9A08523697FDB00736A8E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		0EE9A08723697FF200736A8E /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		0EE9A0892369806400736A8E /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		0EE9A08B2369845200736A8E /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		0EE9A08D2369847000736A8E /* ETStoryboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETStoryboards.swift; sourceTree = "<group>"; };
+		0EE9A08F2369856400736A8E /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		470AAD1E3AC6338349326CDF /* Pods-ET.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ET.debug.xcconfig"; path = "Target Support Files/Pods-ET/Pods-ET.debug.xcconfig"; sourceTree = "<group>"; };
 		8DFD025B8D73F9B7D93A4270 /* Pods-ET.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ET.release.xcconfig"; path = "Target Support Files/Pods-ET/Pods-ET.release.xcconfig"; sourceTree = "<group>"; };
 		F6D2AE4299A2CDB2889076CA /* Pods_ET.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ET.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +93,7 @@
 		0EE9A04B23694B4600736A8E /* ET */ = {
 			isa = PBXGroup;
 			children = (
+				0EE9A07C23697E9000736A8E /* Constant */,
 				0EE9A0672369759B00736A8E /* Applications */,
 				0EE9A0652369756D00736A8E /* Service */,
 				0EE9A0642369755E00736A8E /* Storyboards */,
@@ -93,6 +112,10 @@
 		0EE9A0602369751A00736A8E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0EE9A08223697F9500736A8E /* SettingViewController */,
+				0EE9A08123697F8D00736A8E /* HistoryViewController */,
+				0EE9A08023697F8200736A8E /* TranslateViewController */,
+				0EE9A07F23697F6500736A8E /* MainViewController */,
 				0EE9A068236976FE00736A8E /* Common */,
 			);
 			path = ViewControllers;
@@ -101,6 +124,9 @@
 		0EE9A0612369752500736A8E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0EE9A08B2369845200736A8E /* Reusable.swift */,
+				0EE9A08D2369847000736A8E /* ETStoryboards.swift */,
+				0EE9A08F2369856400736A8E /* Operators.swift */,
 				0EE9A071236977FE00736A8E /* Helpers */,
 				0EE9A06E2369778D00736A8E /* Extensions */,
 			);
@@ -158,6 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				0EE9A0692369771000736A8E /* BaseViewController.swift */,
+				0EE9A07A23697E3B00736A8E /* BaseETNavigation.swift */,
+				0EE9A0892369806400736A8E /* TabbarViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -202,6 +230,45 @@
 				0EE9A0762369792900736A8E /* ProgressView.swift */,
 			);
 			path = ProgressView;
+			sourceTree = "<group>";
+		};
+		0EE9A07C23697E9000736A8E /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				0EE9A07D23697E9A00736A8E /* Color.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		0EE9A07F23697F6500736A8E /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		0EE9A08023697F8200736A8E /* TranslateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0EE9A08723697FF200736A8E /* TranslateViewController.swift */,
+			);
+			path = TranslateViewController;
+			sourceTree = "<group>";
+		};
+		0EE9A08123697F8D00736A8E /* HistoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0EE9A08523697FDB00736A8E /* HistoryViewController.swift */,
+			);
+			path = HistoryViewController;
+			sourceTree = "<group>";
+		};
+		0EE9A08223697F9500736A8E /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0EE9A08323697FA600736A8E /* SettingViewController.swift */,
+			);
+			path = SettingViewController;
 			sourceTree = "<group>";
 		};
 		B722C93DD5CB7F906E9011F6 /* Frameworks */ = {
@@ -338,13 +405,22 @@
 			files = (
 				0EE9A05123694B4600736A8E /* ViewController.swift in Sources */,
 				0EE9A070236977A800736A8E /* CollectionExtensions.swift in Sources */,
+				0EE9A07E23697E9A00736A8E /* Color.swift in Sources */,
 				0EE9A06D2369774900736A8E /* BaseViewModel.swift in Sources */,
+				0EE9A08623697FDB00736A8E /* HistoryViewController.swift in Sources */,
+				0EE9A08E2369847000736A8E /* ETStoryboards.swift in Sources */,
 				0EE9A06A2369771000736A8E /* BaseViewController.swift in Sources */,
 				0EE9A0742369781700736A8E /* ActivityIndicator.swift in Sources */,
 				0EE9A0772369792900736A8E /* ProgressView.swift in Sources */,
+				0EE9A08A2369806400736A8E /* TabbarViewController.swift in Sources */,
 				0EE9A04D23694B4600736A8E /* AppDelegate.swift in Sources */,
+				0EE9A07B23697E3B00736A8E /* BaseETNavigation.swift in Sources */,
 				0EE9A07923697A6C00736A8E /* UIViewExtensions.swift in Sources */,
+				0EE9A08C2369845200736A8E /* Reusable.swift in Sources */,
 				0EE9A04F23694B4600736A8E /* SceneDelegate.swift in Sources */,
+				0EE9A08423697FA600736A8E /* SettingViewController.swift in Sources */,
+				0EE9A08823697FF200736A8E /* TranslateViewController.swift in Sources */,
+				0EE9A0902369856400736A8E /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
