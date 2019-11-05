@@ -17,6 +17,7 @@ class ActionView: BaseCustomView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadViewFromNib()
+        setupSelectedButton()
 //        addGesture()
 //        observeSignal()
     }
@@ -24,9 +25,17 @@ class ActionView: BaseCustomView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadViewFromNib()
+        setupSelectedButton()
 //        addGesture()
 //        observeSignal()
     }
+    
+    private func setupSelectedButton() {
+        guard let button = actionButtons.first else { return }
+        button.isSelected = true
+        setColorSelected(for: button, true)
+    }
+    
     @IBAction func actionButtonsTap(_ sender: UIButton) {
         guard !sender.isSelected else { return }
         sender.isSelected = !sender.isSelected
