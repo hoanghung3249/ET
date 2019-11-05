@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct SegmentItem {
+    var name: String
+    var image: UIImage
+}
+
 class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
@@ -23,7 +28,8 @@ class TabBarViewController: UITabBarController {
         let translateVC = ETStoryboard.main.instantiateViewController(ofType: TranslateViewController.self)
         let navTranslateVC = BaseETNavigation(rootViewController: translateVC)
         navTranslateVC.tabBarItem = UITabBarItem(title: "Translate", image: #imageLiteral(resourceName: "subtitles"), selectedImage: #imageLiteral(resourceName: "subtitles"))
-        navTranslateVC.setupTitle("Translate")
+//        navTranslateVC.setupTitle("Translate")
+        navTranslateVC.navigationBar.isHidden = true
         
         let historyVC = ETStoryboard.main.instantiateViewController(ofType: HistoryViewController.self)
         let navHistoryVC = BaseETNavigation(rootViewController: historyVC)

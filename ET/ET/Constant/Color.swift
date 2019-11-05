@@ -11,7 +11,7 @@ import UIKit
 
 class Color {
     static func mainColor() -> UIColor {
-        return UIColor(red: 27.0/255.0, green: 221.0/255.0, blue: 114.0/255.0, alpha: 0.7)
+        return UIColor(red: 27.0/255.0, green: 224.0/255.0, blue: 123.0/255.0, alpha: 0.7)
     }
     
     static func tabbarColor() -> UIColor {
@@ -20,6 +20,10 @@ class Color {
     
     static func unSeletedTab() -> UIColor {
         return UIColor(red: 133.0/255.0, green: 132.0/255.0, blue: 139.0/255.0, alpha: 1)
+    }
+    
+    static func unSelectedButton() -> UIColor {
+        return UIColor(red: 25.0/255.0, green: 212.0/255.0, blue: 116.0/255.0, alpha: 1)
     }
     
 }
