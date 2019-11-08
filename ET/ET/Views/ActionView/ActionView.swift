@@ -18,16 +18,12 @@ class ActionView: BaseCustomView {
         super.init(coder: aDecoder)
         loadViewFromNib()
         setupSelectedButton()
-//        addGesture()
-//        observeSignal()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadViewFromNib()
         setupSelectedButton()
-//        addGesture()
-//        observeSignal()
     }
     
     private func setupSelectedButton() {

@@ -38,6 +38,11 @@ class BaseViewController: UIViewController {
         updateUI()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        redrawLayout()
+    }
+    
     // MARK: - Configuration
     func configuration() {
     }
@@ -61,6 +66,11 @@ class BaseViewController: UIViewController {
     
     // Use when need setup UI when init View
     func updateUI() {
+        // Override
+    }
+    
+    // Use to re-draw layout
+    func redrawLayout() {
         // Override
     }
     
@@ -135,10 +145,10 @@ extension BaseViewController {
     }
     
     func showLoading() {
-//        ProgressView.shared.show(self.view)
+        ProgressView.shared.show(self.view)
     }
     
     func hideLoading() {
-//        ProgressView.shared.hide()
+        ProgressView.shared.hide()
     }
 }

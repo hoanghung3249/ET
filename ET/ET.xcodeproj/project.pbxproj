@@ -14,6 +14,27 @@
 		0EB1AA0923700B8C00EF0FFE /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA0823700B8C00EF0FFE /* ActionView.swift */; };
 		0EB1AA0B23700B9D00EF0FFE /* ActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1AA0A23700B9D00EF0FFE /* ActionView.xib */; };
 		0EB1AA0E23711ED300EF0FFE /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA0D23711ED300EF0FFE /* BaseCustomView.swift */; };
+		0EB1AA1123714F2600EF0FFE /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA1023714F2600EF0FFE /* LanguageView.swift */; };
+		0EB1AA1323714F3100EF0FFE /* LanguageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1AA1223714F3100EF0FFE /* LanguageView.xib */; };
+		0EB1AA232371535000EF0FFE /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1AA1A2371535000EF0FFE /* DropDownCell.xib */; };
+		0EB1AA242371535000EF0FFE /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA1C2371535000EF0FFE /* DPDKeyboardListener.swift */; };
+		0EB1AA252371535000EF0FFE /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA1D2371535000EF0FFE /* DPDConstants.swift */; };
+		0EB1AA262371535000EF0FFE /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA1E2371535000EF0FFE /* DPDUIView+Extension.swift */; };
+		0EB1AA272371535000EF0FFE /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA202371535000EF0FFE /* DropDown.swift */; };
+		0EB1AA282371535000EF0FFE /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA212371535000EF0FFE /* DropDownCell.swift */; };
+		0EB1AA292371535000EF0FFE /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA222371535000EF0FFE /* DropDown+Appearance.swift */; };
+		0EB1AA352373FD9B00EF0FFE /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA342373FD9B00EF0FFE /* Constant.swift */; };
+		0EB1AA392373FE5200EF0FFE /* ETServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA382373FE5200EF0FFE /* ETServiceAPI.swift */; };
+		0EB1AA3B2374017500EF0FFE /* ETServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA3A2374017500EF0FFE /* ETServiceManager.swift */; };
+		0EB1AA3D237402FD00EF0FFE /* ExtensionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA3C237402FD00EF0FFE /* ExtensionsData.swift */; };
+		0EB1AA3F2374036100EF0FFE /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA3E2374036100EF0FFE /* ExtensionDictionary.swift */; };
+		0EB1AA412374079B00EF0FFE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA402374079B00EF0FFE /* DataModel.swift */; };
+		0EB1AA442374089500EF0FFE /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA432374089500EF0FFE /* LanguageModel.swift */; };
+		0EB1AA4723741A4300EF0FFE /* SupportedLanguage.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1AA4623741A4300EF0FFE /* SupportedLanguage.json */; };
+		0EB1AA4D23751F0400EF0FFE /* ListLanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA4C23751F0400EF0FFE /* ListLanguageView.swift */; };
+		0EB1AA4F23751F1800EF0FFE /* ListLanguageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1AA4E23751F1800EF0FFE /* ListLanguageView.xib */; };
+		0EB1AA53237524EE00EF0FFE /* ListLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA52237524EE00EF0FFE /* ListLanguageCell.swift */; };
+		0EB1AA552375250100EF0FFE /* ListLanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1AA542375250100EF0FFE /* ListLanguageCell.xib */; };
 		0EE9A04D23694B4600736A8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A04C23694B4600736A8E /* AppDelegate.swift */; };
 		0EE9A04F23694B4600736A8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A04E23694B4600736A8E /* SceneDelegate.swift */; };
 		0EE9A05423694B4600736A8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EE9A05223694B4600736A8E /* Main.storyboard */; };
@@ -45,6 +66,28 @@
 		0EB1AA0823700B8C00EF0FFE /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
 		0EB1AA0A23700B9D00EF0FFE /* ActionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionView.xib; sourceTree = "<group>"; };
 		0EB1AA0D23711ED300EF0FFE /* BaseCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomView.swift; sourceTree = "<group>"; };
+		0EB1AA1023714F2600EF0FFE /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
+		0EB1AA1223714F3100EF0FFE /* LanguageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageView.xib; sourceTree = "<group>"; };
+		0EB1AA182371535000EF0FFE /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
+		0EB1AA1A2371535000EF0FFE /* DropDownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
+		0EB1AA1C2371535000EF0FFE /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDKeyboardListener.swift; sourceTree = "<group>"; };
+		0EB1AA1D2371535000EF0FFE /* DPDConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDConstants.swift; sourceTree = "<group>"; };
+		0EB1AA1E2371535000EF0FFE /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DPDUIView+Extension.swift"; sourceTree = "<group>"; };
+		0EB1AA202371535000EF0FFE /* DropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
+		0EB1AA212371535000EF0FFE /* DropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		0EB1AA222371535000EF0FFE /* DropDown+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DropDown+Appearance.swift"; sourceTree = "<group>"; };
+		0EB1AA342373FD9B00EF0FFE /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		0EB1AA382373FE5200EF0FFE /* ETServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETServiceAPI.swift; sourceTree = "<group>"; };
+		0EB1AA3A2374017500EF0FFE /* ETServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETServiceManager.swift; sourceTree = "<group>"; };
+		0EB1AA3C237402FD00EF0FFE /* ExtensionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsData.swift; sourceTree = "<group>"; };
+		0EB1AA3E2374036100EF0FFE /* ExtensionDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDictionary.swift; sourceTree = "<group>"; };
+		0EB1AA402374079B00EF0FFE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		0EB1AA432374089500EF0FFE /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
+		0EB1AA4623741A4300EF0FFE /* SupportedLanguage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SupportedLanguage.json; sourceTree = "<group>"; };
+		0EB1AA4C23751F0400EF0FFE /* ListLanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLanguageView.swift; sourceTree = "<group>"; };
+		0EB1AA4E23751F1800EF0FFE /* ListLanguageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListLanguageView.xib; sourceTree = "<group>"; };
+		0EB1AA52237524EE00EF0FFE /* ListLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLanguageCell.swift; sourceTree = "<group>"; };
+		0EB1AA542375250100EF0FFE /* ListLanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListLanguageCell.xib; sourceTree = "<group>"; };
 		0EE9A04923694B4600736A8E /* ET.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ET.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EE9A04C23694B4600736A8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EE9A04E23694B4600736A8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				0EB1AA0C23711EC300EF0FFE /* Common */,
+				0EB1AA4B23751EC900EF0FFE /* ListLanguageView */,
+				0EB1AA0F23714F0700EF0FFE /* LanguageView */,
 				0EB1AA0723700B6600EF0FFE /* ActionView */,
 			);
 			path = Views;
@@ -132,6 +177,81 @@
 				0EB1AA0D23711ED300EF0FFE /* BaseCustomView.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		0EB1AA0F23714F0700EF0FFE /* LanguageView */ = {
+			isa = PBXGroup;
+			children = (
+				0EB1AA1023714F2600EF0FFE /* LanguageView.swift */,
+				0EB1AA1223714F3100EF0FFE /* LanguageView.xib */,
+			);
+			path = LanguageView;
+			sourceTree = "<group>";
+		};
+		0EB1AA172371535000EF0FFE /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				0EB1AA182371535000EF0FFE /* DropDown.h */,
+				0EB1AA192371535000EF0FFE /* resources */,
+				0EB1AA1B2371535000EF0FFE /* helpers */,
+				0EB1AA1F2371535000EF0FFE /* src */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
+		0EB1AA192371535000EF0FFE /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				0EB1AA1A2371535000EF0FFE /* DropDownCell.xib */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		0EB1AA1B2371535000EF0FFE /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0EB1AA1C2371535000EF0FFE /* DPDKeyboardListener.swift */,
+				0EB1AA1D2371535000EF0FFE /* DPDConstants.swift */,
+				0EB1AA1E2371535000EF0FFE /* DPDUIView+Extension.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		0EB1AA1F2371535000EF0FFE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0EB1AA202371535000EF0FFE /* DropDown.swift */,
+				0EB1AA212371535000EF0FFE /* DropDownCell.swift */,
+				0EB1AA222371535000EF0FFE /* DropDown+Appearance.swift */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		0EB1AA422374088100EF0FFE /* SupportedLanguageModel */ = {
+			isa = PBXGroup;
+			children = (
+				0EB1AA432374089500EF0FFE /* LanguageModel.swift */,
+			);
+			path = SupportedLanguageModel;
+			sourceTree = "<group>";
+		};
+		0EB1AA4523741A2400EF0FFE /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				0EB1AA4623741A4300EF0FFE /* SupportedLanguage.json */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		0EB1AA4B23751EC900EF0FFE /* ListLanguageView */ = {
+			isa = PBXGroup;
+			children = (
+				0EB1AA4C23751F0400EF0FFE /* ListLanguageView.swift */,
+				0EB1AA52237524EE00EF0FFE /* ListLanguageCell.swift */,
+				0EB1AA4E23751F1800EF0FFE /* ListLanguageView.xib */,
+				0EB1AA542375250100EF0FFE /* ListLanguageCell.xib */,
+			);
+			path = ListLanguageView;
 			sourceTree = "<group>";
 		};
 		0EE9A04023694B4600736A8E = {
@@ -209,6 +329,8 @@
 		0EE9A0632369755900736A8E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0EB1AA422374088100EF0FFE /* SupportedLanguageModel */,
+				0EB1AA402374079B00EF0FFE /* DataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,6 +346,8 @@
 		0EE9A0652369756D00736A8E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0EB1AA382373FE5200EF0FFE /* ETServiceAPI.swift */,
+				0EB1AA3A2374017500EF0FFE /* ETServiceManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -268,6 +392,8 @@
 			children = (
 				0EE9A06F236977A800736A8E /* CollectionExtensions.swift */,
 				0EE9A07823697A6B00736A8E /* UIViewExtensions.swift */,
+				0EB1AA3C237402FD00EF0FFE /* ExtensionsData.swift */,
+				0EB1AA3E2374036100EF0FFE /* ExtensionDictionary.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -275,6 +401,8 @@
 		0EE9A071236977FE00736A8E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0EB1AA4523741A2400EF0FFE /* Files */,
+				0EB1AA172371535000EF0FFE /* DropDown */,
 				0EE9A0752369791500736A8E /* ProgressView */,
 				0EE9A0722369780400736A8E /* ActivityIndicator */,
 			);
@@ -301,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				0EE9A07D23697E9A00736A8E /* Color.swift */,
+				0EB1AA342373FD9B00EF0FFE /* Constant.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -414,10 +543,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB1AA4F23751F1800EF0FFE /* ListLanguageView.xib in Resources */,
+				0EB1AA232371535000EF0FFE /* DropDownCell.xib in Resources */,
+				0EB1AA4723741A4300EF0FFE /* SupportedLanguage.json in Resources */,
 				0EB1AA0B23700B9D00EF0FFE /* ActionView.xib in Resources */,
 				0EE9A05923694B4A00736A8E /* LaunchScreen.storyboard in Resources */,
+				0EB1AA1323714F3100EF0FFE /* LanguageView.xib in Resources */,
 				0EE9A05623694B4A00736A8E /* Assets.xcassets in Resources */,
 				0EE9A05423694B4600736A8E /* Main.storyboard in Resources */,
+				0EB1AA552375250100EF0FFE /* ListLanguageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,24 +608,40 @@
 				0EE9A070236977A800736A8E /* CollectionExtensions.swift in Sources */,
 				0EE9A07E23697E9A00736A8E /* Color.swift in Sources */,
 				0EE9A06D2369774900736A8E /* BaseViewModel.swift in Sources */,
+				0EB1AA1123714F2600EF0FFE /* LanguageView.swift in Sources */,
 				0EB1A9FD236FFAB100EF0FFE /* TranslateViewModel.swift in Sources */,
 				0EE9A08623697FDB00736A8E /* HistoryViewController.swift in Sources */,
+				0EB1AA3D237402FD00EF0FFE /* ExtensionsData.swift in Sources */,
 				0EB1AA0E23711ED300EF0FFE /* BaseCustomView.swift in Sources */,
+				0EB1AA292371535000EF0FFE /* DropDown+Appearance.swift in Sources */,
 				0EB1AA00236FFADE00EF0FFE /* HistoryViewModel.swift in Sources */,
+				0EB1AA262371535000EF0FFE /* DPDUIView+Extension.swift in Sources */,
 				0EE9A08E2369847000736A8E /* ETStoryboards.swift in Sources */,
 				0EE9A06A2369771000736A8E /* BaseViewController.swift in Sources */,
 				0EE9A0742369781700736A8E /* ActivityIndicator.swift in Sources */,
 				0EE9A0772369792900736A8E /* ProgressView.swift in Sources */,
+				0EB1AA242371535000EF0FFE /* DPDKeyboardListener.swift in Sources */,
+				0EB1AA412374079B00EF0FFE /* DataModel.swift in Sources */,
 				0EE9A08A2369806400736A8E /* TabbarViewController.swift in Sources */,
+				0EB1AA392373FE5200EF0FFE /* ETServiceAPI.swift in Sources */,
+				0EB1AA4D23751F0400EF0FFE /* ListLanguageView.swift in Sources */,
 				0EE9A04D23694B4600736A8E /* AppDelegate.swift in Sources */,
+				0EB1AA3F2374036100EF0FFE /* ExtensionDictionary.swift in Sources */,
 				0EE9A07B23697E3B00736A8E /* BaseETNavigation.swift in Sources */,
+				0EB1AA352373FD9B00EF0FFE /* Constant.swift in Sources */,
 				0EB1AA0923700B8C00EF0FFE /* ActionView.swift in Sources */,
+				0EB1AA252371535000EF0FFE /* DPDConstants.swift in Sources */,
+				0EB1AA442374089500EF0FFE /* LanguageModel.swift in Sources */,
 				0EE9A07923697A6C00736A8E /* UIViewExtensions.swift in Sources */,
 				0EE9A08C2369845200736A8E /* Reusable.swift in Sources */,
 				0EB1AA03236FFBD200EF0FFE /* SettingsViewModel.swift in Sources */,
 				0EE9A04F23694B4600736A8E /* SceneDelegate.swift in Sources */,
+				0EB1AA282371535000EF0FFE /* DropDownCell.swift in Sources */,
+				0EB1AA3B2374017500EF0FFE /* ETServiceManager.swift in Sources */,
 				0EE9A08423697FA600736A8E /* SettingViewController.swift in Sources */,
+				0EB1AA53237524EE00EF0FFE /* ListLanguageCell.swift in Sources */,
 				0EE9A08823697FF200736A8E /* TranslateViewController.swift in Sources */,
+				0EB1AA272371535000EF0FFE /* DropDown.swift in Sources */,
 				0EE9A0902369856400736A8E /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,9 +9,56 @@
 import UIKit
 
 class TranslateViewController: BaseViewController {
-
-    override func updateUI() {
-        self.view.backgroundColor = .red
+    @IBOutlet weak var vwAction: ActionView!
+    @IBOutlet weak var vwLanguage: LanguageView!
+    @IBOutlet weak var txvFromLanguage: UITextView!
+    @IBOutlet weak var txvToLanguage: UITextView!
+    @IBOutlet weak var btnTranslate: UIButton!
+    @IBOutlet weak var btnRemoveTextFromLanguage: UIButton!
+    @IBOutlet weak var btnSpeakerFromLanguage: UIButton!
+    
+    var viewModel = TranslateViewModel()
+    
+    override func redrawLayout() {
+        setupButtonInTextView()
     }
+    
+    override func bindingViewModel() {
+        bindCommonAction(viewModel)
+        
+    }
+    
+    override func observeSignal() {
+        txvFromLanguage.rx.text.asDriver()
+            .drive(onNext: { [weak self] (text) in
+                guard let self = self, let text = text else { return }
+                self.btnRemoveTextFromLanguage.isHidden = text.isEmpty
+                self.btnSpeakerFromLanguage.isHidden = text.isEmpty
+            }).disposed(by: disposeBag)
+        
+        btnRemoveTextFromLanguage.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.txvFromLanguage.text = ""
+            }).disposed(by: disposeBag)
+        
+        
+        vwLanguage.selectLanguageSignal
+            .subscribe(onNext: { [weak self] (index) in
+                guard let self = self else { return }
+                self.viewModel.loadSelectLanguageView(in: self.view)
+            }).disposed(by: disposeBag)
+    }
+    
+}
 
+// MARK: - Support Method
+private extension TranslateViewController {
+    
+    func setupButtonInTextView() {
+        let buttonFrame = btnRemoveTextFromLanguage.frame
+        let exclusivePath = UIBezierPath(rect: buttonFrame)
+        txvFromLanguage.textContainer.exclusionPaths = [exclusivePath]
+    }
+    
 }

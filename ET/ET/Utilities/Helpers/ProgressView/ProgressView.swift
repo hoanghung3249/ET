@@ -9,7 +9,7 @@
 import Foundation
 import NVActivityIndicatorView
 
-class ProgressView{
+class ProgressView {
     
     static let shared = ProgressView()
     var indicator = NVActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 60,height: 60))

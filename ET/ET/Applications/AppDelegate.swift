@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 //        setupView(window)
+        firstTimeSetup()
         return true
     }
 
@@ -39,6 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: - Private Support Methods
 private extension AppDelegate {
+    
+    func firstTimeSetup() {
+        // Setup keyboard manager
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+    }
     
     func setupView(_ window: UIWindow?) {
         window?.makeKeyAndVisible()
