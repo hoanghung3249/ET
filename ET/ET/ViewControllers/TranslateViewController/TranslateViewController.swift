@@ -25,7 +25,7 @@ class TranslateViewController: BaseViewController {
     
     override func bindingViewModel() {
         bindCommonAction(viewModel)
-        
+        viewModel.selectLanguageView.selectedLanguage.bind(to: vwLanguage.selectedLanguage).disposed(by: disposeBag)
     }
     
     override func observeSignal() {
@@ -44,9 +44,9 @@ class TranslateViewController: BaseViewController {
         
         
         vwLanguage.selectLanguageSignal
-            .subscribe(onNext: { [weak self] (index) in
+            .subscribe(onNext: { [weak self] (index, language) in
                 guard let self = self else { return }
-                self.viewModel.loadSelectLanguageView(in: self.view)
+                self.viewModel.loadSelectLanguageView(in: self.view, index, language)
             }).disposed(by: disposeBag)
     }
     

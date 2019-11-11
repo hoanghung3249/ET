@@ -17,8 +17,10 @@ class TranslateViewModel: BaseViewModel {
         super.init()
     }
     
-    func loadSelectLanguageView(in view: UIView) {
+    func loadSelectLanguageView(in view: UIView, _ seletedIndex: Int, _ selectedLanguage: String) {
         view.addSubview(selectLanguageView)
+        selectLanguageView.selectedIndex = seletedIndex
+        selectLanguageView.inputLanguage.accept(selectedLanguage)
         selectLanguageView.scaleEqualSuperView()
         selectLanguageView.animateDetailView(true)
     }

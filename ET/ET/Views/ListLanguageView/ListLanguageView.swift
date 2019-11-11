@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 class ListLanguageView: BaseCustomView {
 
@@ -14,6 +15,11 @@ class ListLanguageView: BaseCustomView {
     @IBOutlet weak var vwLanguage: UIView!
     @IBOutlet weak var btnDone: UIButton!
     @IBOutlet weak var tbvListLanguage: UITableView!
+    var selectedIndex = 1
+    var languageName = ""
+    let inputLanguage = PublishRelay<String>()
+    let selectedLanguage = PublishRelay<(Int, String)>()
+    private var listLanguage = [LanguageModel]()
     
     deinit {
         for gesture in vwBound.gestureRecognizers ?? [] { vwBound.removeGestureRecognizer(gesture) }
@@ -24,6 +30,7 @@ class ListLanguageView: BaseCustomView {
         loadViewFromNib()
         observeSignal()
         addGesture()
+        prepareLanguage()
         setupTbv()
     }
     
@@ -32,12 +39,23 @@ class ListLanguageView: BaseCustomView {
         loadViewFromNib()
         observeSignal()
         addGesture()
+        prepareLanguage()
         setupTbv()
     }
     
     func observeSignal() {
+        inputLanguage.asObservable().subscribe(onNext: { [weak self] (languageName) in
+            guard let self = self else { return }
+            let index = self.listLanguage.firstIndex(where: {$0.name ?? "" == languageName})
+            self.markLanguage(index ?? 0)
+            }).disposed(by: disposed)
+        
         btnDone.rx.tap.asObservable()
-            .subscribe(onNext: { [weak self] in self?.animateDetailView(false) })
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.selectedLanguage.accept((self.selectedIndex, self.getSelectedLanguage()))
+                self.animateDetailView(false)
+            })
             .disposed(by: disposed)
     }
     
@@ -62,8 +80,12 @@ extension ListLanguageView {
         tbvListLanguage.register(nib, forCellReuseIdentifier: "ListLanguageCell")
     }
     
+    private func prepareLanguage() { listLanguage = supportedLanguage }
+    
+    private func getSelectedLanguage() -> String { return listLanguage.first(where: {$0.selected})?.name ?? "" }
+    
     func animateDetailView(_ isShow: Bool = true) {
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: { [weak self] in
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: { [weak self] in
             guard let self = self else { return }
             self.vwLanguage.frame.origin.y = isShow ? self.frame.origin.y + 120 : self.frame.size.height
             self.vwBound.alpha = isShow ? 0.3 : 0.0
@@ -79,10 +101,19 @@ extension ListLanguageView {
 // MARK: - TableView Datasource & Delegate
 extension ListLanguageView: UITableViewDataSource, UITableViewDelegate {
     
-    private func modelFor(_ row: Int) -> LanguageModel { return supportedLanguage[safe: row] ?? LanguageModel() }
+    private func modelFor(_ row: Int) -> LanguageModel { return listLanguage[safe: row] ?? LanguageModel() }
+    
+    private func markLanguage(_ index: Int) {
+        listLanguage.forEach { $0.selected = false }
+        listLanguage[index].selected = true
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.tbvListLanguage.reloadData()
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return supportedLanguage.count
+        return listLanguage.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,13 +122,8 @@ extension ListLanguageView: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-//    }
-//
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        tableView.cellForRow(at: indexPath)?.accessoryType = .none
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        markLanguage(indexPath.row)
+    }
     
 }

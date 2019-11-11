@@ -19,6 +19,7 @@ class ListLanguageCell: UITableViewCell {
 
     func loadSupportedLanguage(_ model: LanguageModel) {
         lblName.text = model.name ?? ""
+        self.accessoryType = model.selected ? .checkmark : .none
     }
 
 }
