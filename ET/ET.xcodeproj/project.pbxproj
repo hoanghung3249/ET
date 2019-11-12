@@ -35,6 +35,7 @@
 		0EB1AA4F23751F1800EF0FFE /* ListLanguageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1AA4E23751F1800EF0FFE /* ListLanguageView.xib */; };
 		0EB1AA53237524EE00EF0FFE /* ListLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA52237524EE00EF0FFE /* ListLanguageCell.swift */; };
 		0EB1AA552375250100EF0FFE /* ListLanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1AA542375250100EF0FFE /* ListLanguageCell.xib */; };
+		0EB1AA5823795F3800EF0FFE /* TranslateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA5723795F3800EF0FFE /* TranslateModel.swift */; };
 		0EE9A04D23694B4600736A8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A04C23694B4600736A8E /* AppDelegate.swift */; };
 		0EE9A04F23694B4600736A8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A04E23694B4600736A8E /* SceneDelegate.swift */; };
 		0EE9A05423694B4600736A8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EE9A05223694B4600736A8E /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 		0EB1AA4E23751F1800EF0FFE /* ListLanguageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListLanguageView.xib; sourceTree = "<group>"; };
 		0EB1AA52237524EE00EF0FFE /* ListLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLanguageCell.swift; sourceTree = "<group>"; };
 		0EB1AA542375250100EF0FFE /* ListLanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListLanguageCell.xib; sourceTree = "<group>"; };
+		0EB1AA5723795F3800EF0FFE /* TranslateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateModel.swift; sourceTree = "<group>"; };
 		0EE9A04923694B4600736A8E /* ET.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ET.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EE9A04C23694B4600736A8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EE9A04E23694B4600736A8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +256,14 @@
 			path = ListLanguageView;
 			sourceTree = "<group>";
 		};
+		0EB1AA5623795F2700EF0FFE /* TranslateModel */ = {
+			isa = PBXGroup;
+			children = (
+				0EB1AA5723795F3800EF0FFE /* TranslateModel.swift */,
+			);
+			path = TranslateModel;
+			sourceTree = "<group>";
+		};
 		0EE9A04023694B4600736A8E = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +339,7 @@
 		0EE9A0632369755900736A8E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0EB1AA5623795F2700EF0FFE /* TranslateModel */,
 				0EB1AA422374088100EF0FFE /* SupportedLanguageModel */,
 				0EB1AA402374079B00EF0FFE /* DataModel.swift */,
 			);
@@ -610,6 +621,7 @@
 				0EE9A06D2369774900736A8E /* BaseViewModel.swift in Sources */,
 				0EB1AA1123714F2600EF0FFE /* LanguageView.swift in Sources */,
 				0EB1A9FD236FFAB100EF0FFE /* TranslateViewModel.swift in Sources */,
+				0EB1AA5823795F3800EF0FFE /* TranslateModel.swift in Sources */,
 				0EE9A08623697FDB00736A8E /* HistoryViewController.swift in Sources */,
 				0EB1AA3D237402FD00EF0FFE /* ExtensionsData.swift in Sources */,
 				0EB1AA0E23711ED300EF0FFE /* BaseCustomView.swift in Sources */,

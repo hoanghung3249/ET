@@ -107,7 +107,7 @@ class BaseViewController: UIViewController {
         viewModel.didRequestError.asDriver()
             .drive(onNext: { [weak self] error in
                 guard let _ = self, let error = error else { return }
-                print("show error")
+                print("ERROR: \(error.localizedDescription)")
             }).disposed(by: disposeBag)
     }
     

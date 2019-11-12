@@ -114,12 +114,22 @@
                                                         </constraints>
                                                         <state key="normal" image="speaker"/>
                                                     </button>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-Pg-FcE">
+                                                        <rect key="frame" x="364" y="410" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="4gn-Pg-FcE" secondAttribute="height" multiplier="1:1" id="80n-qO-2By"/>
+                                                            <constraint firstAttribute="width" constant="50" id="Gtm-T9-4NT"/>
+                                                        </constraints>
+                                                        <state key="normal" image="speaker"/>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="5C2-9l-OGO" firstAttribute="leading" secondItem="r5A-TI-Zc4" secondAttribute="leading" id="1Zd-e5-Q0K"/>
+                                                    <constraint firstItem="4gn-Pg-FcE" firstAttribute="bottom" secondItem="5C2-9l-OGO" secondAttribute="bottom" id="5HE-zZ-f41"/>
                                                     <constraint firstAttribute="trailing" secondItem="7tu-ij-d76" secondAttribute="trailing" id="KCk-Ii-DHX"/>
                                                     <constraint firstItem="7tu-ij-d76" firstAttribute="top" secondItem="r5A-TI-Zc4" secondAttribute="top" id="MAW-y6-mEt"/>
+                                                    <constraint firstItem="4gn-Pg-FcE" firstAttribute="trailing" secondItem="5C2-9l-OGO" secondAttribute="trailing" id="MJJ-eT-1Ge"/>
                                                     <constraint firstItem="wv6-LH-nUC" firstAttribute="bottom" secondItem="7tu-ij-d76" secondAttribute="bottom" id="TWb-Se-XZr"/>
                                                     <constraint firstItem="6XX-sI-rNy" firstAttribute="trailing" secondItem="7tu-ij-d76" secondAttribute="trailing" id="UCM-dA-9Pt"/>
                                                     <constraint firstAttribute="trailing" secondItem="5C2-9l-OGO" secondAttribute="trailing" id="Ucn-sG-gnf"/>
@@ -184,6 +194,7 @@
                     <connections>
                         <outlet property="btnRemoveTextFromLanguage" destination="6XX-sI-rNy" id="6f4-PE-kvE"/>
                         <outlet property="btnSpeakerFromLanguage" destination="wv6-LH-nUC" id="lNZ-7t-mEs"/>
+                        <outlet property="btnSpeakerToLanguage" destination="4gn-Pg-FcE" id="cVK-bs-RE8"/>
                         <outlet property="btnTranslate" destination="NS9-dJ-lu3" id="wlj-Wg-ulg"/>
                         <outlet property="txvFromLanguage" destination="7tu-ij-d76" id="tix-uh-UOd"/>
                         <outlet property="txvToLanguage" destination="5C2-9l-OGO" id="jCk-cw-UQv"/>

@@ -13,6 +13,7 @@ import Alamofire
 enum ETServiceAPI {
     
     case supportedLanguge
+    case translate(_ translateModel: TranslateModel)
     
 }
 
@@ -24,12 +25,14 @@ extension ETServiceAPI: TargetType {
     var path: String {
         switch self {
         case .supportedLanguge: return APIURL.supportedLanguage
+        case .translate: return ""
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .supportedLanguge: return .get
+        case .supportedLanguge, .translate:
+            return .get
         }
     }
     
@@ -43,13 +46,18 @@ extension ETServiceAPI: TargetType {
         switch self {
         case .supportedLanguge:
             param.updateValue(Locale.current.languageCode ?? "en", forKey: "target")
+        case .translate(let model):
+            param.updateValue("text", forKey: "format")
+            param.updateValue(model.sourceText, forKey: "q")
+            param.updateValue(model.target, forKey: "target")
+            param.updateValue(model.sourceLanguage, forKey: "source")
         }
         return param
     }
     
     var task: Task {
         switch self {
-        case .supportedLanguge:
+        case .supportedLanguge, .translate:
             return .requestParameters(parameters: params, encoding: URLEncoding())
         }
     }

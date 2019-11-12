@@ -17,7 +17,7 @@ class ListLanguageView: BaseCustomView {
     @IBOutlet weak var tbvListLanguage: UITableView!
     var selectedIndex = 1
     var languageName = ""
-    let inputLanguage = PublishRelay<String>()
+    let inputLanguage = PublishRelay<LanguageModel>()
     let selectedLanguage = PublishRelay<(Int, String)>()
     private var listLanguage = [LanguageModel]()
     
@@ -44,9 +44,9 @@ class ListLanguageView: BaseCustomView {
     }
     
     func observeSignal() {
-        inputLanguage.asObservable().subscribe(onNext: { [weak self] (languageName) in
+        inputLanguage.asObservable().subscribe(onNext: { [weak self] (model) in
             guard let self = self else { return }
-            let index = self.listLanguage.firstIndex(where: {$0.name ?? "" == languageName})
+            let index = self.listLanguage.firstIndex(where: {$0.name == model.name})
             self.markLanguage(index ?? 0)
             }).disposed(by: disposed)
         
@@ -55,8 +55,7 @@ class ListLanguageView: BaseCustomView {
                 guard let self = self else { return }
                 self.selectedLanguage.accept((self.selectedIndex, self.getSelectedLanguage()))
                 self.animateDetailView(false)
-            })
-            .disposed(by: disposed)
+            }).disposed(by: disposed)
     }
     
     func addGesture() {

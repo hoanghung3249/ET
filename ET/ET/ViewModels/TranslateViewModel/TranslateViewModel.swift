@@ -12,12 +12,15 @@ import RxCocoa
 
 class TranslateViewModel: BaseViewModel {
     let selectLanguageView = ListLanguageView()
+    let translateText = BehaviorRelay<String?>(value: nil)
+    let finalText = BehaviorRelay<String>(value: "")
+    var translateModel = TranslateModel()
     
     override init() {
         super.init()
     }
     
-    func loadSelectLanguageView(in view: UIView, _ seletedIndex: Int, _ selectedLanguage: String) {
+    func loadSelectLanguageView(in view: UIView, _ seletedIndex: Int, _ selectedLanguage: LanguageModel) {
         view.addSubview(selectLanguageView)
         selectLanguageView.selectedIndex = seletedIndex
         selectLanguageView.inputLanguage.accept(selectedLanguage)
@@ -25,4 +28,19 @@ class TranslateViewModel: BaseViewModel {
         selectLanguageView.animateDetailView(true)
     }
     
+    func requestTranslateText() {
+        let sourceText = translateText.value ?? ""
+        guard !sourceText.isEmpty else { return }
+        
+        translateModel.sourceText = sourceText
+        ETServiceManager.shared.request(.translate(translateModel), mapObject: DataModel<ListTranslateModel>.self)
+        .trackActivity(activityIndicator)
+            .subscribe(onNext: { [weak self] (response) in
+                guard let self = self, let model = response.data, let translateResponse = model.translations.first else { return }
+                self.finalText.accept(translateResponse.translatedText ?? "")
+            }, onError: { [weak self] (error) in
+                guard let self = self else { return }
+                self.requestError(error)
+            }).disposed(by: disposeBag)
+    }
 }

@@ -28,6 +28,11 @@ class LanguageModel: Mappable {
     
     init() {}
     
+    init(_ name: String?, _ language: String?) {
+        self.name = name
+        self.language = language
+    }
+    
     required init?(map: Map) { }
     
     func mapping(map: Map) {

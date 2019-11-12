@@ -23,8 +23,11 @@ class LanguageView: BaseCustomView {
      1: From Language
      2: To Language
      */
-    let selectLanguageSignal = PublishRelay<(Int, String)>()
+    let selectLanguageSignal = PublishRelay<(Int, LanguageModel)>()
     let selectedLanguage = PublishRelay<(Int, String)>()
+    let fromLanguageBehavior = BehaviorRelay<String>(value: "")
+    let toLanguageBehavior = BehaviorRelay<String>(value: "")
+    let translateModel = BehaviorRelay<TranslateModel>(value: TranslateModel())
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,25 +48,48 @@ class LanguageView: BaseCustomView {
             .subscribe(onNext: { [weak self] (index, language) in
                 guard let self = self else { return }
                 switch index {
-                case 1: self.lblFromLanguage.text = language
-                case 2: self.lblToLanguage.text = language
+                case 1: self.fromLanguageBehavior.accept(language)
+                case 2: self.toLanguageBehavior.accept(language)
                 default: break
                 }
             }).disposed(by: disposed)
+        
+        fromLanguageBehavior.asDriver().skip(1).drive(lblFromLanguage.rx.text).disposed(by: disposed)
+        toLanguageBehavior.asDriver().skip(1).drive(lblToLanguage.rx.text).disposed(by: disposed)
+        
+        Observable.combineLatest(fromLanguageBehavior.asObservable(), toLanguageBehavior.asObservable()) { [weak self] (fromLng, toLng) -> (TranslateModel) in
+            guard let self = self else { return TranslateModel() }
+            let translateModel = TranslateModel()
+            translateModel.sourceLanguage = self.getLanguage(from: fromLng) ?? ""
+            translateModel.target = self.getLanguage(from: toLng) ?? ""
+            return translateModel
+            }.bind(to: translateModel).disposed(by: disposed)
     }
     
     func observeSignal() {
         btnSelectFromLg.rx.tap.asObservable()
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
-                self.selectLanguageSignal.accept((1, self.lblFromLanguage.text ?? ""))
+                let languageModel = LanguageModel(self.lblFromLanguage.text, self.getLanguage(from: self.lblFromLanguage.text ?? ""))
+                self.selectLanguageSignal.accept((1, languageModel))
             }).disposed(by: disposed)
         
         btnSelectToLg.rx.tap.asObservable()
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
-                self.selectLanguageSignal.accept((2, self.lblToLanguage.text ?? ""))
+                let languageModel = LanguageModel(self.lblToLanguage.text, self.getLanguage(from: self.lblToLanguage.text ?? ""))
+                self.selectLanguageSignal.accept((2, languageModel))
             }).disposed(by: disposed)
+    }
+    
+}
+
+// MARK: - Support Method
+private extension LanguageView {
+    
+    func getLanguage(from name: String) -> String? {
+        let language = supportedLanguage.filter({$0.name == name}).first?.language
+        return language
     }
     
 }

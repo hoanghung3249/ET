@@ -16,6 +16,7 @@ class TranslateViewController: BaseViewController {
     @IBOutlet weak var btnTranslate: UIButton!
     @IBOutlet weak var btnRemoveTextFromLanguage: UIButton!
     @IBOutlet weak var btnSpeakerFromLanguage: UIButton!
+    @IBOutlet weak var btnSpeakerToLanguage: UIButton!
     
     var viewModel = TranslateViewModel()
     
@@ -25,7 +26,21 @@ class TranslateViewController: BaseViewController {
     
     override func bindingViewModel() {
         bindCommonAction(viewModel)
+        txvFromLanguage.rx.text.bind(to: viewModel.translateText).disposed(by: disposeBag)
+        
         viewModel.selectLanguageView.selectedLanguage.bind(to: vwLanguage.selectedLanguage).disposed(by: disposeBag)
+        
+        vwLanguage.translateModel.asObservable()
+            .subscribe(onNext: { [weak self] (model) in
+                guard let self = self else { return }
+                self.viewModel.translateModel = model
+            }).disposed(by: disposeBag)
+        
+        viewModel.finalText.asDriver()
+            .drive(onNext: { [weak self] (finalText) in
+                guard let self = self else { return }
+                self.txvToLanguage.text = finalText
+            }).disposed(by: disposeBag)
     }
     
     override func observeSignal() {
@@ -42,11 +57,22 @@ class TranslateViewController: BaseViewController {
                 self.txvFromLanguage.text = ""
             }).disposed(by: disposeBag)
         
+        txvToLanguage.rx.text.asDriver()
+            .drive(onNext: { [weak self] (text) in
+                guard let self = self, let text = text else { return }
+                self.btnSpeakerToLanguage.isHidden = text.isEmpty
+            }).disposed(by: disposeBag)
         
         vwLanguage.selectLanguageSignal
             .subscribe(onNext: { [weak self] (index, language) in
                 guard let self = self else { return }
                 self.viewModel.loadSelectLanguageView(in: self.view, index, language)
+            }).disposed(by: disposeBag)
+        
+        btnTranslate.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.viewModel.requestTranslateText()
             }).disposed(by: disposeBag)
     }
     

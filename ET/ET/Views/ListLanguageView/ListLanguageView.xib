@@ -12,7 +12,7 @@
             <connections>
                 <outlet property="btnDone" destination="NI9-tT-FbW" id="wgZ-lF-HCk"/>
                 <outlet property="tbvListLanguage" destination="5pW-tl-qyt" id="K2T-fq-ptV"/>
-                <outlet property="vwBound" destination="FHq-yn-N5W" id="oxa-b6-zMG"/>
+                <outlet property="vwBound" destination="iVv-RK-gqb" id="zaX-zi-5RP"/>
                 <outlet property="vwLanguage" destination="v6r-By-syJ" id="dDg-Vp-CrN"/>
             </connections>
         </placeholder>
@@ -24,10 +24,6 @@
                 <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVv-RK-gqb">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHq-yn-N5W">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v6r-By-syJ">
                     <rect key="frame" x="20" y="150" width="374" height="596"/>
@@ -83,7 +79,7 @@
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="5"/>
+                            <real key="value" value="10"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
@@ -94,14 +90,11 @@
                 <constraint firstItem="v6r-By-syJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="E3T-hu-WOL"/>
                 <constraint firstItem="v6r-By-syJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="150" id="IFR-vk-gEN"/>
                 <constraint firstAttribute="trailing" secondItem="iVv-RK-gqb" secondAttribute="trailing" id="Y7G-Wt-dsB"/>
-                <constraint firstItem="FHq-yn-N5W" firstAttribute="bottom" secondItem="v6r-By-syJ" secondAttribute="bottom" constant="150" id="cEq-w1-jda"/>
-                <constraint firstItem="FHq-yn-N5W" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="d8S-q1-Oru"/>
+                <constraint firstItem="v6r-By-syJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="150" id="bzg-ei-TS3"/>
                 <constraint firstItem="iVv-RK-gqb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fEU-pj-Xck"/>
+                <constraint firstAttribute="bottom" secondItem="v6r-By-syJ" secondAttribute="bottom" constant="150" id="ibM-3f-unb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="v6r-By-syJ" secondAttribute="trailing" constant="20" id="p5p-in-2RB"/>
                 <constraint firstAttribute="bottom" secondItem="iVv-RK-gqb" secondAttribute="bottom" id="qYW-Kl-hYs"/>
-                <constraint firstAttribute="bottom" secondItem="FHq-yn-N5W" secondAttribute="bottom" id="tuT-2t-N6O"/>
-                <constraint firstAttribute="trailing" secondItem="FHq-yn-N5W" secondAttribute="trailing" id="v6A-pg-f2Q"/>
-                <constraint firstItem="FHq-yn-N5W" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yp1-H4-RIH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
