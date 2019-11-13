@@ -21,10 +21,13 @@ class BaseViewModel {
     var requestProcessTracking: [PublishSubject<Void>] = [] // For tracking multithreads request
     let didRequestError = BehaviorRelay<Error?>(value: nil)
 //    var supportedLanguage = [LanguageModel]()
+    let fromLanguageBehavior = BehaviorRelay<String>(value: "")
+    let toLanguageBehavior = BehaviorRelay<String>(value: "")
     
     // MARK: - Init BaseViewModel
     init() {
         if supportedLanguage.isEmpty { getSupportedLanguage() }
+        firstSetupLanguage()
     }
     
     deinit {
@@ -68,6 +71,7 @@ extension BaseViewModel {
     }
 }
 
+// MARK: - Support Method
 extension BaseViewModel {
     
     private func getSupportedLanguage() {
@@ -80,5 +84,29 @@ extension BaseViewModel {
         } catch(let error) {
             print("Error when get supported language: \(error.localizedDescription)")
         }
+    }
+    
+    func firstSetupLanguage() {
+        // Load current device's language
+        let currentLanguage = supportedLanguage.filter({$0.language == TranslationManager.shared.getDefaultLanguage() }).first
+        
+        if getDefaultLanguage(of: .fromLanguage) == nil && getDefaultLanguage(of: .toLanguage) == nil {
+            // If default language nil, save the current language
+            TranslationManager.shared.saveLanguage(type: .fromLanguage(currentLanguage ?? LanguageModel("English", "en")))
+            TranslationManager.shared.saveLanguage(type: .toLanguage(currentLanguage ?? LanguageModel("English", "en")))
+            fromLanguageBehavior.accept(currentLanguage?.name ?? "")
+            toLanguageBehavior.accept(currentLanguage?.name ?? "")
+        } else {
+            // Load the last default language
+            let fromLanguage = TranslationManager.shared.loadLanguage(for: .fromLanguage)
+            let toLanguage = TranslationManager.shared.loadLanguage(for: .toLanguage)
+            fromLanguageBehavior.accept(fromLanguage?.name ?? "")
+            toLanguageBehavior.accept(toLanguage?.name ?? "")
+        }
+    }
+    
+    func getDefaultLanguage(of type: UserDefaultKey) -> LanguageModel? {
+        guard let model = TranslationManager.shared.loadLanguage(for: type) else { return nil }
+        return model
     }
 }

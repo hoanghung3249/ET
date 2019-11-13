@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E067941237AAFAD000388B7 /* TranslationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E067940237AAFAD000388B7 /* TranslationManager.swift */; };
+		0E067944237AB48D000388B7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E067943237AB48D000388B7 /* DataManager.swift */; };
 		0EB1A9FD236FFAB100EF0FFE /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1A9FC236FFAB100EF0FFE /* TranslateViewModel.swift */; };
 		0EB1AA00236FFADE00EF0FFE /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1A9FF236FFADE00EF0FFE /* HistoryViewModel.swift */; };
 		0EB1AA03236FFBD200EF0FFE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA02236FFBD200EF0FFE /* SettingsViewModel.swift */; };
@@ -60,6 +62,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E067940237AAFAD000388B7 /* TranslationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationManager.swift; sourceTree = "<group>"; };
+		0E067943237AB48D000388B7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		0EB1A9FC236FFAB100EF0FFE /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		0EB1A9FF236FFADE00EF0FFE /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		0EB1AA02236FFBD200EF0FFE /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -129,6 +133,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E06793F237AAF94000388B7 /* TranslationManager */ = {
+			isa = PBXGroup;
+			children = (
+				0E067940237AAFAD000388B7 /* TranslationManager.swift */,
+			);
+			path = TranslationManager;
+			sourceTree = "<group>";
+		};
+		0E067942237AB480000388B7 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				0E067943237AB48D000388B7 /* DataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
 		0EB1A9FB236FFA9C00EF0FFE /* TranslateViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +432,8 @@
 		0EE9A071236977FE00736A8E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0E067942237AB480000388B7 /* DataManager */,
+				0E06793F237AAF94000388B7 /* TranslationManager */,
 				0EB1AA4523741A2400EF0FFE /* Files */,
 				0EB1AA172371535000EF0FFE /* DropDown */,
 				0EE9A0752369791500736A8E /* ProgressView */,
@@ -641,10 +663,12 @@
 				0EB1AA3F2374036100EF0FFE /* ExtensionDictionary.swift in Sources */,
 				0EE9A07B23697E3B00736A8E /* BaseETNavigation.swift in Sources */,
 				0EB1AA352373FD9B00EF0FFE /* Constant.swift in Sources */,
+				0E067941237AAFAD000388B7 /* TranslationManager.swift in Sources */,
 				0EB1AA0923700B8C00EF0FFE /* ActionView.swift in Sources */,
 				0EB1AA252371535000EF0FFE /* DPDConstants.swift in Sources */,
 				0EB1AA442374089500EF0FFE /* LanguageModel.swift in Sources */,
 				0EE9A07923697A6C00736A8E /* UIViewExtensions.swift in Sources */,
+				0E067944237AB48D000388B7 /* DataManager.swift in Sources */,
 				0EE9A08C2369845200736A8E /* Reusable.swift in Sources */,
 				0EB1AA03236FFBD200EF0FFE /* SettingsViewModel.swift in Sources */,
 				0EE9A04F23694B4600736A8E /* SceneDelegate.swift in Sources */,

@@ -45,7 +45,7 @@ extension ETServiceAPI: TargetType {
         param.updateValue(Constant.APIKey, forKey: "key")
         switch self {
         case .supportedLanguge:
-            param.updateValue(Locale.current.languageCode ?? "en", forKey: "target")
+            param.updateValue(TranslationManager.shared.getDefaultLanguage(), forKey: "target")
         case .translate(let model):
             param.updateValue("text", forKey: "format")
             param.updateValue(model.sourceText, forKey: "q")

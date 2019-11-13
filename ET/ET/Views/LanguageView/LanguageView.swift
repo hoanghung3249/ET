@@ -54,8 +54,18 @@ class LanguageView: BaseCustomView {
                 }
             }).disposed(by: disposed)
         
-        fromLanguageBehavior.asDriver().skip(1).drive(lblFromLanguage.rx.text).disposed(by: disposed)
-        toLanguageBehavior.asDriver().skip(1).drive(lblToLanguage.rx.text).disposed(by: disposed)
+
+        fromLanguageBehavior.asObservable().subscribe(onNext: { [weak self] (name) in
+            guard let self = self else { return }
+            TranslationManager.shared.saveLanguage(type: .fromLanguage(self.getLanguageModel(name) ?? LanguageModel("English", "en")))
+            self.lblFromLanguage.text = name
+            }).disposed(by: disposed)
+
+        toLanguageBehavior.asObservable().subscribe(onNext: { [weak self] (name) in
+            guard let self = self else { return }
+            TranslationManager.shared.saveLanguage(type: .toLanguage(self.getLanguageModel(name) ?? LanguageModel("English", "en")))
+            self.lblToLanguage.text = name
+            }).disposed(by: disposed)
         
         Observable.combineLatest(fromLanguageBehavior.asObservable(), toLanguageBehavior.asObservable()) { [weak self] (fromLng, toLng) -> (TranslateModel) in
             guard let self = self else { return TranslateModel() }
@@ -90,6 +100,10 @@ private extension LanguageView {
     func getLanguage(from name: String) -> String? {
         let language = supportedLanguage.filter({$0.name == name}).first?.language
         return language
+    }
+    
+    func getLanguageModel(_ name: String) -> LanguageModel? {
+        return supportedLanguage.first(where: {$0.name == name})
     }
     
 }

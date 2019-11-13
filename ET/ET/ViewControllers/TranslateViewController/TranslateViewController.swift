@@ -41,6 +41,9 @@ class TranslateViewController: BaseViewController {
                 guard let self = self else { return }
                 self.txvToLanguage.text = finalText
             }).disposed(by: disposeBag)
+        
+        viewModel.fromLanguageBehavior.bind(to: vwLanguage.fromLanguageBehavior).disposed(by: disposeBag)
+        viewModel.toLanguageBehavior.bind(to: vwLanguage.toLanguageBehavior).disposed(by: disposeBag)
     }
     
     override func observeSignal() {

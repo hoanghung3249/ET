@@ -30,8 +30,10 @@ class TranslateViewModel: BaseViewModel {
     
     func requestTranslateText() {
         let sourceText = translateText.value ?? ""
-        guard !sourceText.isEmpty else { return }
-        
+        if sourceText.isEmpty {
+            finalText.accept("")
+            return
+        }
         translateModel.sourceText = sourceText
         ETServiceManager.shared.request(.translate(translateModel), mapObject: DataModel<ListTranslateModel>.self)
         .trackActivity(activityIndicator)
