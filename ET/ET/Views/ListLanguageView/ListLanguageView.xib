@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListLanguageView" customModule="ET" customModuleProvider="target">
             <connections>
                 <outlet property="btnDone" destination="NI9-tT-FbW" id="wgZ-lF-HCk"/>
+                <outlet property="searchBar" destination="kmO-cU-hq8" id="ynC-Bk-zRg"/>
                 <outlet property="tbvListLanguage" destination="5pW-tl-qyt" id="K2T-fq-ptV"/>
                 <outlet property="vwBound" destination="iVv-RK-gqb" id="zaX-zi-5RP"/>
                 <outlet property="vwLanguage" destination="v6r-By-syJ" id="dDg-Vp-CrN"/>
@@ -26,7 +27,7 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v6r-By-syJ">
-                    <rect key="frame" x="20" y="150" width="374" height="596"/>
+                    <rect key="frame" x="20" y="130" width="374" height="636"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCY-08-vLC">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
@@ -63,17 +64,28 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5pW-tl-qyt">
-                            <rect key="frame" x="0.0" y="60" width="374" height="536"/>
+                            <rect key="frame" x="0.0" y="110" width="374" height="526"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </tableView>
+                        <searchBar contentMode="redraw" placeholder="Tìm kiếm" translatesAutoresizingMaskIntoConstraints="NO" id="kmO-cU-hq8">
+                            <rect key="frame" x="0.0" y="60" width="374" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="8ng-1l-up9"/>
+                            </constraints>
+                            <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
+                        <constraint firstItem="5pW-tl-qyt" firstAttribute="top" secondItem="kmO-cU-hq8" secondAttribute="bottom" id="0dF-U1-qEj"/>
+                        <constraint firstItem="kmO-cU-hq8" firstAttribute="trailing" secondItem="mCY-08-vLC" secondAttribute="trailing" id="DSZ-eA-xCC"/>
                         <constraint firstItem="5pW-tl-qyt" firstAttribute="leading" secondItem="v6r-By-syJ" secondAttribute="leading" id="GbI-mk-Xdj"/>
                         <constraint firstItem="mCY-08-vLC" firstAttribute="leading" secondItem="v6r-By-syJ" secondAttribute="leading" id="HW9-lK-UWM"/>
-                        <constraint firstItem="5pW-tl-qyt" firstAttribute="top" secondItem="mCY-08-vLC" secondAttribute="bottom" id="Y6a-Ux-3y0"/>
                         <constraint firstItem="mCY-08-vLC" firstAttribute="top" secondItem="v6r-By-syJ" secondAttribute="top" id="kqb-Q3-q3q"/>
                         <constraint firstAttribute="trailing" secondItem="mCY-08-vLC" secondAttribute="trailing" id="mqD-3K-Rfi"/>
+                        <constraint firstItem="kmO-cU-hq8" firstAttribute="leading" secondItem="mCY-08-vLC" secondAttribute="leading" id="nHf-fs-IMl"/>
+                        <constraint firstItem="kmO-cU-hq8" firstAttribute="top" secondItem="mCY-08-vLC" secondAttribute="bottom" id="q60-zy-Do0"/>
                         <constraint firstAttribute="trailing" secondItem="5pW-tl-qyt" secondAttribute="trailing" id="uyb-EB-kzW"/>
                         <constraint firstAttribute="bottom" secondItem="5pW-tl-qyt" secondAttribute="bottom" id="yKM-80-wGb"/>
                     </constraints>
@@ -88,11 +100,10 @@
             <constraints>
                 <constraint firstItem="iVv-RK-gqb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4k9-4l-Ha8"/>
                 <constraint firstItem="v6r-By-syJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="E3T-hu-WOL"/>
-                <constraint firstItem="v6r-By-syJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="150" id="IFR-vk-gEN"/>
                 <constraint firstAttribute="trailing" secondItem="iVv-RK-gqb" secondAttribute="trailing" id="Y7G-Wt-dsB"/>
-                <constraint firstItem="v6r-By-syJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="150" id="bzg-ei-TS3"/>
+                <constraint firstItem="v6r-By-syJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="130" id="bzg-ei-TS3"/>
                 <constraint firstItem="iVv-RK-gqb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fEU-pj-Xck"/>
-                <constraint firstAttribute="bottom" secondItem="v6r-By-syJ" secondAttribute="bottom" constant="150" id="ibM-3f-unb"/>
+                <constraint firstAttribute="bottom" secondItem="v6r-By-syJ" secondAttribute="bottom" constant="130" id="ibM-3f-unb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="v6r-By-syJ" secondAttribute="trailing" constant="20" id="p5p-in-2RB"/>
                 <constraint firstAttribute="bottom" secondItem="iVv-RK-gqb" secondAttribute="bottom" id="qYW-Kl-hYs"/>
             </constraints>

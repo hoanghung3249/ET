@@ -10,15 +10,18 @@ import UIKit
 import RxCocoa
 
 class ListLanguageView: BaseCustomView {
-
+    
     @IBOutlet weak var vwBound: UIView!
     @IBOutlet weak var vwLanguage: UIView!
     @IBOutlet weak var btnDone: UIButton!
     @IBOutlet weak var tbvListLanguage: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     var selectedIndex = 1
     var languageName = ""
+    var isSearching = false
     let inputLanguage = PublishRelay<LanguageModel>()
     let selectedLanguage = PublishRelay<(Int, String)>()
+    private var fillerListLanguage = [LanguageModel]()
     private var listLanguage = [LanguageModel]()
     
     deinit {
@@ -32,6 +35,7 @@ class ListLanguageView: BaseCustomView {
         addGesture()
         prepareLanguage()
         setupTbv()
+        setupSearchBar()
     }
     
     override init(frame: CGRect) {
@@ -41,14 +45,20 @@ class ListLanguageView: BaseCustomView {
         addGesture()
         prepareLanguage()
         setupTbv()
+        setupSearchBar()
     }
     
     func observeSignal() {
         inputLanguage.asObservable().subscribe(onNext: { [weak self] (model) in
             guard let self = self else { return }
-            let index = self.listLanguage.firstIndex(where: {$0.name == model.name})
-            self.markLanguage(index ?? 0)
-            }).disposed(by: disposed)
+            if self.isSearching {
+                let index = self.fillerListLanguage.firstIndex(where: {$0.name == model.name})
+                self.markLanguage(index ?? 0)
+            } else {
+                let index = self.listLanguage.firstIndex(where: {$0.name == model.name})
+                self.markLanguage(index ?? 0)
+            }
+        }).disposed(by: disposed)
         
         btnDone.rx.tap.asObservable()
             .subscribe(onNext: { [weak self] in
@@ -79,9 +89,18 @@ extension ListLanguageView {
         tbvListLanguage.register(nib, forCellReuseIdentifier: "ListLanguageCell")
     }
     
-    private func prepareLanguage() { listLanguage = supportedLanguage }
+    private func prepareLanguage() {
+//        isSearching ? fillerListLanguage = supportedLanguage : listLanguage = supportedLanguage
+        if isSearching {
+            fillerListLanguage = supportedLanguage
+        } else {
+            listLanguage = supportedLanguage
+        }
+    }
     
-    private func getSelectedLanguage() -> String { return listLanguage.first(where: {$0.selected})?.name ?? "" }
+    private func getSelectedLanguage() -> String {
+        return isSearching ? fillerListLanguage.first(where: {$0.selected})?.name ?? "" : listLanguage.first(where: {$0.selected})?.name ?? ""
+    }
     
     func animateDetailView(_ isShow: Bool = true) {
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: { [weak self] in
@@ -97,14 +116,53 @@ extension ListLanguageView {
     
 }
 
+// MARK: - SearchBar Delegate
+
+extension ListLanguageView:UISearchBarDelegate {
+    private func setupSearchBar() {
+        searchBar.delegate = self
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            self.isSearching = false
+            self.fillerListLanguage.removeAll()
+        } else {
+            self.isSearching = true
+            self.fillerListLanguage = listLanguage.filter({ (language) -> Bool in
+                let name = language.name ?? ""
+                let searchName = name.lowercased().contains(searchText.lowercased())
+                return searchName
+            })
+        }
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.tbvListLanguage.reloadData()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+        searchBar.endEditing(true)
+    }
+    
+}
+
 // MARK: - TableView Datasource & Delegate
 extension ListLanguageView: UITableViewDataSource, UITableViewDelegate {
     
-    private func modelFor(_ row: Int) -> LanguageModel { return listLanguage[safe: row] ?? LanguageModel() }
+    private func modelFor(_ row: Int) -> LanguageModel {
+        return isSearching ? fillerListLanguage[safe: row] ?? LanguageModel() : listLanguage[safe: row] ?? LanguageModel()
+    }
     
     private func markLanguage(_ index: Int) {
-        listLanguage.forEach { $0.selected = false }
-        listLanguage[index].selected = true
+//        isSearching ? fillerListLanguage.forEach { $0.selected = false } ; fillerListLanguage[index].selected = true : listLanguage.forEach { $0.selected = false } ; listLanguage[index].selected = true
+        if isSearching {
+            fillerListLanguage.forEach { $0.selected = false } ; fillerListLanguage[index].selected = true
+        } else {
+            listLanguage.forEach { $0.selected = false } ; listLanguage[index].selected = true
+        }
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.tbvListLanguage.reloadData()
@@ -112,7 +170,7 @@ extension ListLanguageView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listLanguage.count
+        return isSearching ? fillerListLanguage.count : listLanguage.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
