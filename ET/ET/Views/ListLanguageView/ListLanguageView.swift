@@ -67,6 +67,8 @@ class ListLanguageView: BaseCustomView {
                 guard let self = self else { return }
                 self.selectedLanguage.accept((self.selectedIndex, self.getSelectedLanguage()))
                 self.animateDetailView(false)
+                self.searchBar.text = ""
+                self.isSearching = false
             }).disposed(by: disposed)
     }
     
@@ -170,7 +172,6 @@ extension ListLanguageView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isSearching ? fillerListLanguage.count : listLanguage.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
