@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListLanguageView" customModule="ET" customModuleProvider="target">
             <connections>
                 <outlet property="btnDone" destination="NI9-tT-FbW" id="wgZ-lF-HCk"/>
+                <outlet property="searchBar" destination="9fg-gV-Mvk" id="cuM-17-fKS"/>
                 <outlet property="tbvListLanguage" destination="5pW-tl-qyt" id="K2T-fq-ptV"/>
                 <outlet property="vwBound" destination="iVv-RK-gqb" id="zaX-zi-5RP"/>
                 <outlet property="vwLanguage" destination="v6r-By-syJ" id="dDg-Vp-CrN"/>
@@ -63,18 +64,28 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5pW-tl-qyt">
-                            <rect key="frame" x="0.0" y="60" width="374" height="536"/>
+                            <rect key="frame" x="0.0" y="110" width="374" height="486"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </tableView>
+                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9fg-gV-Mvk">
+                            <rect key="frame" x="0.0" y="60" width="374" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="QhD-lk-zoE"/>
+                            </constraints>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="5pW-tl-qyt" firstAttribute="leading" secondItem="v6r-By-syJ" secondAttribute="leading" id="GbI-mk-Xdj"/>
                         <constraint firstItem="mCY-08-vLC" firstAttribute="leading" secondItem="v6r-By-syJ" secondAttribute="leading" id="HW9-lK-UWM"/>
-                        <constraint firstItem="5pW-tl-qyt" firstAttribute="top" secondItem="mCY-08-vLC" secondAttribute="bottom" id="Y6a-Ux-3y0"/>
+                        <constraint firstItem="9fg-gV-Mvk" firstAttribute="leading" secondItem="v6r-By-syJ" secondAttribute="leading" id="PCV-Qo-x9e"/>
+                        <constraint firstItem="5pW-tl-qyt" firstAttribute="top" secondItem="9fg-gV-Mvk" secondAttribute="bottom" id="dwA-bm-4R9"/>
                         <constraint firstItem="mCY-08-vLC" firstAttribute="top" secondItem="v6r-By-syJ" secondAttribute="top" id="kqb-Q3-q3q"/>
                         <constraint firstAttribute="trailing" secondItem="mCY-08-vLC" secondAttribute="trailing" id="mqD-3K-Rfi"/>
+                        <constraint firstAttribute="trailing" secondItem="9fg-gV-Mvk" secondAttribute="trailing" id="uDJ-mD-e2T"/>
                         <constraint firstAttribute="trailing" secondItem="5pW-tl-qyt" secondAttribute="trailing" id="uyb-EB-kzW"/>
+                        <constraint firstItem="9fg-gV-Mvk" firstAttribute="top" secondItem="mCY-08-vLC" secondAttribute="bottom" id="v4Z-wN-PYm"/>
                         <constraint firstAttribute="bottom" secondItem="5pW-tl-qyt" secondAttribute="bottom" id="yKM-80-wGb"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
