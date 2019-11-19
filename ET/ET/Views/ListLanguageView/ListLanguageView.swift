@@ -60,10 +60,11 @@ class ListLanguageView: BaseCustomView {
         btnDone.rx.tap.asObservable()
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.getSelectedLanguage() == "" ? print("error") : self.selectedLanguage.accept((self.selectedIndex, self.getSelectedLanguage()))
+                if !(self.getSelectedLanguage().isEmpty) {
+                    self.selectedLanguage.accept((self.selectedIndex, self.getSelectedLanguage()))
+                }
                 self.animateDetailView(false)
-                self.searchBar.text = ""
-                self.isSearching = false
+                self.resetSearchBar()
             }).disposed(by: disposed)
     }
     
@@ -74,6 +75,12 @@ class ListLanguageView: BaseCustomView {
     
     @objc func handleTap() {
         animateDetailView(false)
+        self.resetSearchBar()
+    }
+    
+    func resetSearchBar() {
+        self.searchBar.text = ""
+        self.isSearching = false
     }
     
 }
