@@ -45,5 +45,4 @@ class TranslateViewModel: BaseViewModel {
                 self.requestError(error)
             }).disposed(by: disposeBag)
     }
-    
 }
