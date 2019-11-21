@@ -10,8 +10,6 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-var supportedLanguage = [LanguageModel]()
-
 class BaseViewModel {
     let disposeBag = DisposeBag()
     let shouldReloadData = BehaviorRelay<Void?>(value: nil)
@@ -20,13 +18,12 @@ class BaseViewModel {
     lazy var activityIndicator = ActivityIndicator() // For checking loading status
     var requestProcessTracking: [PublishSubject<Void>] = [] // For tracking multithreads request
     let didRequestError = BehaviorRelay<Error?>(value: nil)
-//    var supportedLanguage = [LanguageModel]()
     let fromLanguageBehavior = BehaviorRelay<String>(value: "")
     let toLanguageBehavior = BehaviorRelay<String>(value: "")
     
     // MARK: - Init BaseViewModel
     init() {
-        if supportedLanguage.isEmpty { getSupportedLanguage() }
+        TranslationManager.shared.loadListSupportedLanguage()
         firstSetupLanguage()
     }
     
@@ -74,21 +71,9 @@ extension BaseViewModel {
 // MARK: - Support Method
 extension BaseViewModel {
     
-    private func getSupportedLanguage() {
-        var listLanguageSupported: ListLanguageModel?
-        let bundle = Bundle.main.path(forResource: "SupportedLanguage", ofType: "json")
-        do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: bundle ?? ""), options: .mappedIfSafe)
-            listLanguageSupported = ListLanguageModel(JSON: data.toJSON() ?? [String: Any]())
-            supportedLanguage = listLanguageSupported?.languages ?? []
-        } catch(let error) {
-            print("Error when get supported language: \(error.localizedDescription)")
-        }
-    }
-    
     func firstSetupLanguage() {
         // Load current device's language
-        let currentLanguage = supportedLanguage.filter({$0.language == TranslationManager.shared.getDefaultLanguage() }).first
+        let currentLanguage = TranslationManager.shared.supportedLanguage.filter({$0.language == TranslationManager.shared.getDefaultLanguage() }).first
         
         if getDefaultLanguage(of: .fromLanguage) == nil && getDefaultLanguage(of: .toLanguage) == nil {
             // If default language nil, save the current language

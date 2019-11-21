@@ -32,8 +32,25 @@ extension UserDefaultKey {
 class TranslationManager {
     
     static let shared = TranslationManager()
+    var supportedLanguage = [LanguageModel]()
+    
+    init() {
+        loadListSupportedLanguage()
+    }
     
     func getDefaultLanguage() -> String { return Locale.current.languageCode ?? "en" }
+    
+    func loadListSupportedLanguage() {
+        var listLanguageSupported: ListLanguageModel?
+        let bundle = Bundle.main.path(forResource: "SupportedLanguage", ofType: "json")
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: bundle ?? ""), options: .mappedIfSafe)
+            listLanguageSupported = ListLanguageModel(JSON: data.toJSON() ?? [String: Any]())
+            supportedLanguage = listLanguageSupported?.languages ?? []
+        } catch(let error) {
+            print("Error when get supported language: \(error.localizedDescription)")
+        }
+    }
     
     func saveLanguage(type languageType: LanguageType) {
         switch languageType {
