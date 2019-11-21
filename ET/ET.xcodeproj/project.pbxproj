@@ -59,6 +59,7 @@
 		0EE9A08E2369847000736A8E /* ETStoryboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08D2369847000736A8E /* ETStoryboards.swift */; };
 		0EE9A0902369856400736A8E /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08F2369856400736A8E /* Operators.swift */; };
 		341FB8BC6EB47A229DB08D38 /* Pods_ET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D2AE4299A2CDB2889076CA /* Pods_ET.framework */; };
+		B72CBD8E2384D8AF00F29E0D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72CBD8C2384D8AF00F29E0D /* CameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		0EE9A08F2369856400736A8E /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		470AAD1E3AC6338349326CDF /* Pods-ET.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ET.debug.xcconfig"; path = "Target Support Files/Pods-ET/Pods-ET.debug.xcconfig"; sourceTree = "<group>"; };
 		8DFD025B8D73F9B7D93A4270 /* Pods-ET.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ET.release.xcconfig"; path = "Target Support Files/Pods-ET/Pods-ET.release.xcconfig"; sourceTree = "<group>"; };
+		B72CBD8C2384D8AF00F29E0D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		F6D2AE4299A2CDB2889076CA /* Pods_ET.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ET.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB1AA0C23711EC300EF0FFE /* Common */,
+				B72CBD8B2384D88300F29E0D /* CameraView */,
 				0EB1AA4B23751EC900EF0FFE /* ListLanguageView */,
 				0EB1AA0F23714F0700EF0FFE /* LanguageView */,
 				0EB1AA0723700B6600EF0FFE /* ActionView */,
@@ -507,6 +510,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B72CBD8B2384D88300F29E0D /* CameraView */ = {
+			isa = PBXGroup;
+			children = (
+				B72CBD8C2384D8AF00F29E0D /* CameraView.swift */,
+			);
+			path = CameraView;
+			sourceTree = "<group>";
+		};
 		FD27058265E5D876FE5389AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,6 +676,7 @@
 				0EB1AA352373FD9B00EF0FFE /* Constant.swift in Sources */,
 				0E067941237AAFAD000388B7 /* TranslationManager.swift in Sources */,
 				0EB1AA0923700B8C00EF0FFE /* ActionView.swift in Sources */,
+				B72CBD8E2384D8AF00F29E0D /* CameraView.swift in Sources */,
 				0EB1AA252371535000EF0FFE /* DPDConstants.swift in Sources */,
 				0EB1AA442374089500EF0FFE /* LanguageModel.swift in Sources */,
 				0EE9A07923697A6C00736A8E /* UIViewExtensions.swift in Sources */,
@@ -823,7 +835,9 @@
 			baseConfigurationReference = 470AAD1E3AC6338349326CDF /* Pods-ET.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 533G42X52A;
 				INFOPLIST_FILE = ET/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -832,6 +846,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hungnguyen.ET;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -842,7 +857,9 @@
 			baseConfigurationReference = 8DFD025B8D73F9B7D93A4270 /* Pods-ET.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 533G42X52A;
 				INFOPLIST_FILE = ET/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -851,6 +868,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hungnguyen.ET;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -12,6 +12,7 @@ import RxCocoa
 
 class TranslateViewModel: BaseViewModel {
     let selectLanguageView = ListLanguageView()
+    let selectCameraView = CameraView()
     let translateText = BehaviorRelay<String?>(value: nil)
     let finalText = BehaviorRelay<String>(value: "")
     var translateModel = TranslateModel()
@@ -27,7 +28,7 @@ class TranslateViewModel: BaseViewModel {
         selectLanguageView.scaleEqualSuperView()
         selectLanguageView.animateDetailView(true)
     }
-    
+        
     func requestTranslateText() {
         let sourceText = translateText.value ?? ""
         if sourceText.isEmpty {

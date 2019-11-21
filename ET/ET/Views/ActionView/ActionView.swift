@@ -13,6 +13,7 @@ import RxSwift
 class ActionView: BaseCustomView {
     
     @IBOutlet var actionButtons: [UIButton]!
+    let selectedSender = PublishRelay<Int>()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -37,7 +38,10 @@ class ActionView: BaseCustomView {
         sender.isSelected = !sender.isSelected
         setColorSelected(for: sender, sender.isSelected)
         unSelectedButton(sender.tag)
+        self.selectedSender.accept(sender.tag)
     }
+    
+
     
 }
 
