@@ -53,7 +53,7 @@ class ListLanguageView: BaseCustomView {
     func observeSignal() {
         inputLanguage.asObservable().subscribe(onNext: { [weak self] (model) in
             guard let self = self else { return }
-            let index = self.isSearching ? self.fillerListLanguage.firstIndex(where: {$0.name == model.name }) :self.listLanguage.firstIndex(where: {$0.name == model.name})
+            let index = self.isSearching ? self.fillerListLanguage.firstIndex(where: {$0.name == model.name }) : self.listLanguage.firstIndex(where: {$0.name == model.name})
             self.markLanguage(index ?? 0)
         }).disposed(by: disposed)
         
@@ -97,9 +97,9 @@ extension ListLanguageView {
     
     private func prepareLanguage() {
         if isSearching {
-            fillerListLanguage = supportedLanguage
+            fillerListLanguage = TranslationManager.shared.supportedLanguage
         } else {
-            listLanguage = supportedLanguage
+            listLanguage = TranslationManager.shared.supportedLanguage
         }
     }
     
@@ -125,7 +125,7 @@ extension ListLanguageView {
 extension ListLanguageView:UISearchBarDelegate {
     private func setupSearchBar() {
         searchBar.delegate = self
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = "Search..."
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

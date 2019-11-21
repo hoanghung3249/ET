@@ -98,12 +98,12 @@ class LanguageView: BaseCustomView {
 private extension LanguageView {
     
     func getLanguage(from name: String) -> String? {
-        let language = supportedLanguage.filter({$0.name == name}).first?.language
+        let language = TranslationManager.shared.supportedLanguage.filter({$0.name == name}).first?.language
         return language
     }
     
     func getLanguageModel(_ name: String) -> LanguageModel? {
-        return supportedLanguage.first(where: {$0.name == name})
+        return TranslationManager.shared.supportedLanguage.first(where: {$0.name == name})
     }
     
 }
