@@ -85,3 +85,14 @@ extension UIView {
         self.clipsToBounds = true
     }
 }
+extension CIImage {
+  func toUIImage() -> UIImage? {
+    let context: CIContext = CIContext.init(options: nil)
+
+    if let cgImage: CGImage = context.createCGImage(self, from: self.extent) {
+      return UIImage(cgImage: cgImage)
+    } else {
+      return nil
+    }
+  }
+}

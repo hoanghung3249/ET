@@ -10,16 +10,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 import AVFoundation
+import Photos
 
 class CameraView: BaseViewController {
     
     @IBOutlet weak var vwLanguage: LanguageView!
     @IBOutlet weak var capturePreviewView: UIView!
     @IBOutlet weak var captureButton: UIButton!
+    @IBOutlet weak var switchCameras: UIButton!
     @IBOutlet weak var toggleFlashButton: UIButton!
-    @IBOutlet weak var toggleCameraButton: UIButton!
     @IBOutlet weak var backView: UIButton!
-//    var viewModel = TranslateViewModel()
+    //    var viewModel = TranslateViewModel()
     var captureSession: AVCaptureSession?
     var frontCamera: AVCaptureDevice?
     var rearCamera: AVCaptureDevice?
@@ -33,26 +34,76 @@ class CameraView: BaseViewController {
     var previewLayer: AVCaptureVideoPreviewLayer?
     //
     var flashMode = AVCaptureDevice.FlashMode.off
-    
+    //
+    var photoCaptureCompletionBlock: ((UIImage?, Error?) -> Void)?
+
     override func bindingViewModel() {
-//        bindCommonAction(viewModel)
-//        viewModel.selectLanguageView.selectedLanguage.bind(to: vwLanguage.selectedLanguage).disposed(by: disposeBag)
-//
-//        vwLanguage.translateModel.asObservable()
-//            .subscribe(onNext: { [weak self] (model) in
-//                guard let self = self else { return }
-//                self.viewModel.translateModel = model
-//            }).disposed(by: disposeBag)
-        
+        //        bindCommonAction(viewModel)
+        //        viewModel.selectLanguageView.selectedLanguage.bind(to: vwLanguage.selectedLanguage).disposed(by: disposeBag)
+        //
+        //        vwLanguage.translateModel.asObservable()
+        //            .subscribe(onNext: { [weak self] (model) in
+        //                guard let self = self else { return }
+        //                self.viewModel.translateModel = model
+        //            }).disposed(by: disposeBag)
         captureButton.toCicle()
         configureCameraController()
-
+        
     }
     
     override func observeSignal() {
+        
         backView.rx.tap.asObservable()
             .subscribe(onNext: { [weak self](_) in
-                self?.dismiss(animated: true, completion: nil)
+                guard let self = self else { return }
+                self.dismiss(animated: true, completion: nil)
+            }).disposed(by: disposeBag)
+        
+        toggleFlashButton.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self](_) in
+                guard let self = self else { return }
+                if self.flashMode == .on {
+                    self.flashMode = .off
+                    self.toggleFlashButton.setImage(#imageLiteral(resourceName: "FlashOffIcon"), for: .normal)
+                } else {
+                    self.flashMode = .on
+                    self.toggleFlashButton.setImage(#imageLiteral(resourceName: "FlashOnIcon"), for: .normal)
+                }
+            }).disposed(by: disposeBag)
+        
+        switchCameras.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self](_) in
+                guard let self = self else { return }
+                do {
+                    try self.switchCamera()
+                }
+                catch {
+                    print(error)
+                }
+                switch self.currentCameraPosition {
+                case .some(.front):
+                    self.switchCameras.setImage(#imageLiteral(resourceName: "Front Camera Icon"), for: .normal)
+                    
+                case .some(.rear):
+                    self.switchCameras.setImage(#imageLiteral(resourceName: "Rear Camera Icon"), for: .normal)
+                    
+                case .none:
+                    return
+                }
+            }).disposed(by: disposeBag)
+        
+        captureButton.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self](_) in
+                guard let self = self else { return }
+                self.captureImage {(image, error) in
+                    guard let image = image else {
+                        print(error ?? "Image capture error")
+                        return
+                    }
+                    try? PHPhotoLibrary.shared().performChangesAndWait {
+                        PHAssetChangeRequest.creationRequestForAsset(from: image)
+                    }
+                }
             }).disposed(by: disposeBag)
     }
 }
@@ -79,7 +130,6 @@ extension CameraView {
                     }
                 }
             }
-            
         }
         
         func configureDeviceInputs() throws {
@@ -100,9 +150,7 @@ extension CameraView {
                 else { throw CameraControllerError.inputsAreInvalid }
                 
                 self.currentCameraPosition = .front
-            }
-                
-            else { throw CameraControllerError.noCamerasAvailable }
+            } else { throw CameraControllerError.noCamerasAvailable }
         }
         
         func configurePhotoOutput() throws {
@@ -115,7 +163,6 @@ extension CameraView {
             
             captureSession.startRunning()
         }
-        
         DispatchQueue(label: "prepare").async {
             do {
                 createCaptureSession()
@@ -123,15 +170,12 @@ extension CameraView {
                 try configureDeviceInputs()
                 try configurePhotoOutput()
             }
-                
             catch {
                 DispatchQueue.main.async {
                     completionHandler(error)
                 }
-                
                 return
             }
-            
             DispatchQueue.main.async {
                 completionHandler(nil)
             }
@@ -147,9 +191,77 @@ extension CameraView {
         
         view.layer.insertSublayer(self.previewLayer!, at: 0)
         self.previewLayer?.frame = view.frame
-        
     }
     
+}
+// MARK: - Camera
+extension CameraView {
+    func switchCamera() throws {
+        guard let currentCameraPosition = currentCameraPosition, let captureSession = self.captureSession, captureSession.isRunning else { throw CameraControllerError.captureSessionIsMissing }
+        
+        captureSession.beginConfiguration()
+        
+        func switchToFrontCamera() throws {
+            guard let inputs = captureSession.inputs as? [AVCaptureInput], let rearCameraInput = self.rearCameraInput, inputs.contains(rearCameraInput),
+                let frontCamera = self.frontCamera else { throw CameraControllerError.invalidOperation }
+            
+            self.frontCameraInput = try AVCaptureDeviceInput(device: frontCamera)
+
+            captureSession.removeInput(rearCameraInput)
+            
+            if captureSession.canAddInput(self.frontCameraInput!) {
+                captureSession.addInput(self.frontCameraInput!)
+                
+                self.currentCameraPosition = .front
+            } else { throw CameraControllerError.invalidOperation }
+        }
+        
+        func switchToRearCamera() throws {
+            guard let inputs = captureSession.inputs as? [AVCaptureInput], let frontCameraInput = self.frontCameraInput, inputs.contains(frontCameraInput),
+                let rearCamera = self.rearCamera else { throw CameraControllerError.invalidOperation }
+            
+            self.rearCameraInput = try AVCaptureDeviceInput(device: rearCamera)
+            
+            captureSession.removeInput(frontCameraInput)
+            
+            if captureSession.canAddInput(self.rearCameraInput!) {
+                captureSession.addInput(self.rearCameraInput!)
+                
+                self.currentCameraPosition = .rear
+            } else { throw CameraControllerError.invalidOperation }
+        }
+    
+        switch currentCameraPosition {
+        case .front:
+            try switchToRearCamera()
+            
+        case .rear:
+            try switchToFrontCamera()
+        }
+        
+        captureSession.commitConfiguration()
+        
+    }
+}
+//MARK: - CaptureImage
+extension CameraView {
+    func captureImage(completion: @escaping (UIImage?, Error?) -> Void) {
+        guard let captureSession = captureSession, captureSession.isRunning else { completion(nil, CameraControllerError.captureSessionIsMissing); return }
+        
+        let settings = AVCapturePhotoSettings()
+        settings.flashMode = self.flashMode
+        
+        self.photoOutput?.capturePhoto(with: settings, delegate: self)
+        self.photoCaptureCompletionBlock = completion
+    }
+    
+}
+extension CameraView: AVCapturePhotoCaptureDelegate {
+    @available(iOS 11.0, *)
+    public func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        let imageData = UIImage(data: photo.fileDataRepresentation()!)
+            self.photoCaptureCompletionBlock?(imageData, nil)
+    }
 }
 extension CameraView {
     enum CameraControllerError: Swift.Error {
@@ -174,4 +286,20 @@ extension CameraView {
             try? self.displayPreview(on: self.capturePreviewView)
         }
     }
+}
+// Vision
+extension CameraView {
+    func handle(buffer: CMSampleBuffer) {
+      guard let pixelBuffer = CMSampleBufferGetImageBuffer(buffer) else {
+        return
+      }
+
+      let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+      guard let image = ciImage.toUIImage() else {
+        return
+      }
+
+//      makeRequest(image: image)
+    }
+    
 }

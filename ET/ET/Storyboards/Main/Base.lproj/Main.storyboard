@@ -227,7 +227,7 @@
                                                     <constraint firstAttribute="width" constant="30" id="qSH-el-ZMS"/>
                                                 </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="PhotoCameraIcon"/>
+                                                <state key="normal" image="Rear Camera Icon"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyi-Js-ocU">
                                                 <rect key="frame" x="15" y="15" width="30" height="30"/>
@@ -322,7 +322,8 @@
                         <outlet property="backView" destination="xyi-Js-ocU" id="yjd-2D-crr"/>
                         <outlet property="captureButton" destination="wg2-RY-xkk" id="9hC-nd-7qe"/>
                         <outlet property="capturePreviewView" destination="NnQ-hI-Ce1" id="CB1-Ty-4hY"/>
-                        <outlet property="toggleFlashButton" destination="8XF-vN-e5h" id="jOh-Uj-TjG"/>
+                        <outlet property="switchCameras" destination="8XF-vN-e5h" id="n2N-ma-7ah"/>
+                        <outlet property="toggleFlashButton" destination="89j-Cj-tpk" id="qcf-By-Kx7"/>
                         <outlet property="vwLanguage" destination="GsQ-0l-9pq" id="NPr-rk-Ylw"/>
                     </connections>
                 </viewController>
@@ -386,7 +387,7 @@
         <image name="001-circle-shape-outline" width="45" height="45"/>
         <image name="002-left-arrow" width="24" height="20"/>
         <image name="FlashOffIcon" width="24" height="24"/>
-        <image name="PhotoCameraIcon" width="24" height="24"/>
+        <image name="Rear Camera Icon" width="24" height="24"/>
         <image name="delete" width="21.333333969116211" height="21.333333969116211"/>
         <image name="history" width="32" height="32"/>
         <image name="picture" width="24" height="24"/>
