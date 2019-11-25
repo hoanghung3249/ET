@@ -12,6 +12,8 @@ import RxCocoa
 
 class LanguageView: BaseCustomView {
     
+    @IBOutlet weak var imgReverse: UIImageView!
+    @IBOutlet var vwSuper: UIView!
     @IBOutlet weak var vwFromLanguage: UIView!
     @IBOutlet weak var vwToLanguage: UIView!
     @IBOutlet weak var lblFromLanguage: UILabel!

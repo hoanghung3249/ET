@@ -12,7 +12,7 @@ import RxCocoa
 
 class TranslateViewModel: BaseViewModel {
     let selectLanguageView = ListLanguageView()
-    let selectCameraView = CameraView()
+    let selectCameraView = CameraViewController()
     let translateText = BehaviorRelay<String?>(value: nil)
     let finalText = BehaviorRelay<String>(value: "")
     var translateModel = TranslateModel()

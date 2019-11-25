@@ -98,8 +98,11 @@ private extension TranslateViewController {
     }
     
     func presentViewCamera(){
-        let cameraVC = ETStoryboard.main.instantiateViewController(ofType: CameraView.self)
-        self.present(cameraVC, animated: true, completion: nil)
+        
+        let cameraVC = ETStoryboard.main.instantiateViewController(ofType: CameraViewController.self)
+        self.addCustomChildViewController(cameraVC)
+        
+//        self.present(cameraVC, animated: true, completion: nil)
     }
 
 }

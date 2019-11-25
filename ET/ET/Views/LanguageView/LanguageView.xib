@@ -12,9 +12,11 @@
             <connections>
                 <outlet property="btnSelectFromLg" destination="33D-yF-fhg" id="6Os-Ac-ILO"/>
                 <outlet property="btnSelectToLg" destination="3RV-0K-a5y" id="Oqy-Sj-671"/>
+                <outlet property="imgReverse" destination="nPW-7q-U4e" id="ozp-dO-Dn7"/>
                 <outlet property="lblFromLanguage" destination="mm5-Zc-dGw" id="YDy-lC-09N"/>
                 <outlet property="lblToLanguage" destination="Mdp-7v-5Qm" id="AaA-Vu-eL7"/>
                 <outlet property="vwFromLanguage" destination="t1C-dV-Szy" id="03B-1y-zWA"/>
+                <outlet property="vwSuper" destination="iN0-l3-epB" id="pbc-Zu-a7z"/>
                 <outlet property="vwToLanguage" destination="JgB-E2-2MG" id="Sew-1Y-6vr"/>
             </connections>
         </placeholder>
