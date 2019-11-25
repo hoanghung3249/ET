@@ -23,11 +23,10 @@ class CameraViewController: BaseViewController {
     let camera = CameraManager()
     var requests = [VNRequest]()
     
-    override func bindingViewModel() {
+    override func configuration() {
         captureButton.toCicle()
-        setupColorView()
+        setupLanguageView()
         configureCameraController()
-
     }
     
     override func observeSignal() {
@@ -67,7 +66,17 @@ class CameraViewController: BaseViewController {
             }).disposed(by: disposeBag)
     }
 }
-extension CameraViewController {
+
+// MARK: - Support method
+private extension CameraViewController {
+    
+    func setupLanguageView() {
+        vwLanguage.vwSuper.backgroundColor = .clear
+        vwLanguage.lblFromLanguage.textColor = .white
+        vwLanguage.lblToLanguage.textColor = .white
+        vwLanguage.imgReverse.image = UIImage(named: "reverse@2x")
+    }
+    
     func configureCameraController() {
         camera.prepare { [weak self] (error) in
             guard let self = self else { return }
@@ -76,13 +85,5 @@ extension CameraViewController {
             }
             try? self.camera.displayPreview(on: self.capturePreviewView)
         }
-    }
-}
-extension CameraViewController {
-    func setupColorView(){
-        self.vwLanguage.vwSuper.backgroundColor = .clear
-        self.vwLanguage.lblFromLanguage.textColor = .white
-        self.vwLanguage.lblToLanguage.textColor = .white
-        self.vwLanguage.imgReverse.image = UIImage(named: "reverse@2x")
     }
 }

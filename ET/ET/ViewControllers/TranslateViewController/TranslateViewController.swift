@@ -98,10 +98,10 @@ private extension TranslateViewController {
     }
     
     func presentViewCamera(){
-        
         let cameraVC = ETStoryboard.main.instantiateViewController(ofType: CameraViewController.self)
-        self.addCustomChildViewController(cameraVC)
-        
+//        self.addCustomChildViewController(cameraVC)
+        cameraVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(cameraVC, animated: true)
 //        self.present(cameraVC, animated: true, completion: nil)
     }
 
