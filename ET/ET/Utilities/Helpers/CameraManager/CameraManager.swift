@@ -42,7 +42,9 @@ class CameraManager:NSObject {
     var flashMode = AVCaptureDevice.FlashMode.off
     // chụp hình
     var photoCaptureCompletionBlock: ((UIImage?, Error?) -> Void)?
-
+    // vision
+    var requests = [VNRequest]()
+    
     func prepare(completionHandler: @escaping (Error?) -> Void) {
         func createCaptureSession() {
             self.captureSession = AVCaptureSession()
@@ -148,5 +150,46 @@ extension CameraManager: AVCapturePhotoCaptureDelegate {
     public func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         let imageData = UIImage(data: photo.fileDataRepresentation()!)
         self.photoCaptureCompletionBlock?(imageData, nil)
+    }
+}
+// textDetection
+extension CameraManager {
+    func startTextDetection() {
+        let textRequest = VNDetectTextRectanglesRequest(completionHandler: self.detectTextHandler)
+        textRequest.reportCharacterBoxes = true
+        self.requests = [textRequest]
+    }
+
+    func detectTextHandler(request: VNRequest, error: Error?) {
+        guard let observations = request.results else {
+            print("no result")
+            return
+        }
+        let result = observations.map({$0 as? VNTextObservation})
+        print(result)
+    }
+
+}
+// Truyền dữ liệu từ camera tới detector
+extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            return
+        }
+        
+        var requestOptions:[VNImageOption : Any] = [:]
+        
+        if let camData = CMGetAttachment(sampleBuffer, key: kCMSampleBufferAttachmentKey_CameraIntrinsicMatrix, attachmentModeOut: nil) {
+            requestOptions = [.cameraIntrinsics:camData]
+        }
+        
+        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: CGImagePropertyOrientation.right, options: requestOptions)
+        
+        do {
+            try imageRequestHandler.perform(self.requests)
+            print(self.requests)
+        } catch {
+            print(error)
+        }
     }
 }

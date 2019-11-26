@@ -42,7 +42,7 @@ class BaseViewController: UIViewController {
         super.viewDidLayoutSubviews()
         redrawLayout()
     }
-    
+
     // MARK: - Configuration
     func configuration() {
     }

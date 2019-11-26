@@ -12,6 +12,7 @@ target 'ET' do
   pod 'DeviceKit', '2.0.0'
   pod 'IQKeyboardManagerSwift'
   pod 'NVActivityIndicatorView'
+  pod 'CameraKit-iOS'
 
 
 end

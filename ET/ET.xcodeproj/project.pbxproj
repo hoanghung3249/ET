@@ -59,6 +59,8 @@
 		0EE9A08E2369847000736A8E /* ETStoryboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08D2369847000736A8E /* ETStoryboards.swift */; };
 		0EE9A0902369856400736A8E /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08F2369856400736A8E /* Operators.swift */; };
 		341FB8BC6EB47A229DB08D38 /* Pods_ET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D2AE4299A2CDB2889076CA /* Pods_ET.framework */; };
+		B7A10625238CC87B00BE07E3 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A10624238CC87B00BE07E3 /* Camera.storyboard */; };
+		B7A10628238CDC3D00BE07E3 /* CameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A10627238CDC3D00BE07E3 /* CameraSettingsViewController.swift */; };
 		B7AA87B8238BAFE00086B7EF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA87B7238BAFE00086B7EF /* CameraViewController.swift */; };
 		B7AA87BE238BBEB70086B7EF /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA87BD238BBEB70086B7EF /* CameraManager.swift */; };
 /* End PBXBuildFile section */
@@ -120,6 +122,8 @@
 		0EE9A08F2369856400736A8E /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		470AAD1E3AC6338349326CDF /* Pods-ET.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ET.debug.xcconfig"; path = "Target Support Files/Pods-ET/Pods-ET.debug.xcconfig"; sourceTree = "<group>"; };
 		8DFD025B8D73F9B7D93A4270 /* Pods-ET.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ET.release.xcconfig"; path = "Target Support Files/Pods-ET/Pods-ET.release.xcconfig"; sourceTree = "<group>"; };
+		B7A10624238CC87B00BE07E3 /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
+		B7A10627238CDC3D00BE07E3 /* CameraSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSettingsViewController.swift; sourceTree = "<group>"; };
 		B7AA87B7238BAFE00086B7EF /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		B7AA87BD238BBEB70086B7EF /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		F6D2AE4299A2CDB2889076CA /* Pods_ET.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ET.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -328,6 +332,7 @@
 		0EE9A0602369751A00736A8E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B7A10626238CDC2200BE07E3 /* CameraSettingsViewController */,
 				B7AA87B6238BAFC80086B7EF /* CameraViewController */,
 				0EE9A08223697F9500736A8E /* SettingViewController */,
 				0EE9A08123697F8D00736A8E /* HistoryViewController */,
@@ -374,6 +379,7 @@
 		0EE9A0642369755E00736A8E /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				B7232609238CC6D100C91979 /* Camera */,
 				0EE9A0662369758F00736A8E /* Main */,
 			);
 			path = Storyboards;
@@ -513,6 +519,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B7232609238CC6D100C91979 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				B7A10624238CC87B00BE07E3 /* Camera.storyboard */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		B7A10626238CDC2200BE07E3 /* CameraSettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B7A10627238CDC3D00BE07E3 /* CameraSettingsViewController.swift */,
+			);
+			path = CameraSettingsViewController;
+			sourceTree = "<group>";
+		};
 		B7AA87B6238BAFC80086B7EF /* CameraViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -607,6 +629,7 @@
 				0EE9A05623694B4A00736A8E /* Assets.xcassets in Resources */,
 				0EE9A05423694B4600736A8E /* Main.storyboard in Resources */,
 				0EB1AA552375250100EF0FFE /* ListLanguageCell.xib in Resources */,
+				B7A10625238CC87B00BE07E3 /* Camera.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +714,7 @@
 				0EB1AA442374089500EF0FFE /* LanguageModel.swift in Sources */,
 				0EE9A07923697A6C00736A8E /* UIViewExtensions.swift in Sources */,
 				0E067944237AB48D000388B7 /* DataManager.swift in Sources */,
+				B7A10628238CDC3D00BE07E3 /* CameraSettingsViewController.swift in Sources */,
 				B7AA87B8238BAFE00086B7EF /* CameraViewController.swift in Sources */,
 				B7AA87BE238BBEB70086B7EF /* CameraManager.swift in Sources */,
 				0EE9A08C2369845200736A8E /* Reusable.swift in Sources */,
