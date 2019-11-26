@@ -152,3 +152,31 @@ extension BaseViewController {
         ProgressView.shared.hide()
     }
 }
+extension BaseViewController {
+    func addCustomChildViewController(_ child: UIViewController) {
+        let root = UIApplication.shared.keyWindow?.rootViewController
+        child.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        child.view.alpha = 0
+        UIView.transition(with: child.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            
+            root!.addChild(child)
+            root!.view.addSubview(child.view)
+            child.didMove(toParent: root)
+            child.view.alpha = 1
+        }, completion: nil)
+    }
+    
+    func remove() {
+        guard parent != nil else {
+            return
+        }
+        
+        UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            self.view.alpha = 0
+        }, completion: { _ in
+            self.willMove(toParent: nil)
+            self.removeFromParent()
+            self.view.removeFromSuperview()
+        })
+    }
+}

@@ -77,6 +77,13 @@ class TranslateViewController: BaseViewController {
                 guard let self = self else { return }
                 self.viewModel.requestTranslateText()
             }).disposed(by: disposeBag)
+        
+        vwAction.selectedSender.subscribe(onNext: { [weak self](tag) in
+            guard let self = self else { return }
+            if tag == 1 {
+                self.presentViewCamera()
+            }
+            }).disposed(by: disposeBag)
     }
     
 }
@@ -90,4 +97,12 @@ private extension TranslateViewController {
         txvFromLanguage.textContainer.exclusionPaths = [exclusivePath]
     }
     
+    func presentViewCamera(){
+        let cameraVC = ETStoryboard.main.instantiateViewController(ofType: CameraViewController.self)
+//        self.addCustomChildViewController(cameraVC)
+        cameraVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(cameraVC, animated: true)
+//        self.present(cameraVC, animated: true, completion: nil)
+    }
+
 }
