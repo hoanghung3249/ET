@@ -16,6 +16,7 @@ class CameraViewController: BaseViewController {
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var selectPhotoButton: UIButton!
     @IBOutlet weak var toggleFlashButton: UIButton!
+    @IBOutlet weak var swapCameraButton: UIButton!
     var viewModel = CameraViewModel()
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,6 +31,12 @@ class CameraViewController: BaseViewController {
     
     override func bindingViewModel() {
         bindCommonAction(viewModel)
+        
+        viewModel.isFlashOn.asDriver()
+            .drive(onNext: { [weak self] (isOn) in
+                guard let self = self else { return }
+                self.toggleFlashButton.setImage(isOn ? #imageLiteral(resourceName: "FlashOnIcon") : #imageLiteral(resourceName: "FlashOffIcon"), for: .normal)
+            }).disposed(by: disposeBag)
     }
     
     override func observeSignal() {
@@ -57,6 +64,12 @@ class CameraViewController: BaseViewController {
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
                 self.viewModel.isFlashOn.accept(!(self.viewModel.isFlashOn.value))
+            }).disposed(by: disposeBag)
+        
+        swapCameraButton.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.viewModel.camera.swapCamera()
             }).disposed(by: disposeBag)
     }
 }
