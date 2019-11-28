@@ -109,7 +109,9 @@ class CameraManager: NSObject {
             self.captureSession.startRunning()
             
             DispatchQueue.main.async {
-                self.videoPreviewLayer.frame = self.previewView.bounds
+                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                    self.videoPreviewLayer.frame = self.previewView.bounds
+                }, completion: nil)
             }
         }
     }
