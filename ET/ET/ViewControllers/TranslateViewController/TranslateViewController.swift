@@ -80,10 +80,11 @@ class TranslateViewController: BaseViewController {
         
         vwAction.selectedSender.subscribe(onNext: { [weak self](tag) in
             guard let self = self else { return }
-            if tag == 1 {
-                self.presentViewCamera()
+            switch tag {
+                case 1: self.presentViewCamera()
+                default: break
             }
-            }).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
     }
     
 }
@@ -98,7 +99,7 @@ private extension TranslateViewController {
     }
     
     func presentViewCamera(){
-        let cameraVC = ETStoryboard.camera.instantiateViewController(ofType: CameraViewController.self)
+        let cameraVC = ETStoryboard.main.instantiateViewController(ofType: CameraViewController.self)
         cameraVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(cameraVC, animated: true)
     }
