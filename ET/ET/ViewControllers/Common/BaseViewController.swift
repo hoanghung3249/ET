@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var scrollView: UIScrollView?
+    var imagePicker = UIImagePickerController()
     
     let disposeBag = DisposeBag()
     
@@ -42,7 +43,7 @@ class BaseViewController: UIViewController {
         super.viewDidLayoutSubviews()
         redrawLayout()
     }
-    
+
     // MARK: - Configuration
     func configuration() {
     }
@@ -152,31 +153,23 @@ extension BaseViewController {
         ProgressView.shared.hide()
     }
 }
+
+// MARK: - Support Method
 extension BaseViewController {
-    func addCustomChildViewController(_ child: UIViewController) {
-        let root = UIApplication.shared.keyWindow?.rootViewController
-        child.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-        child.view.alpha = 0
-        UIView.transition(with: child.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
-            
-            root!.addChild(child)
-            root!.view.addSubview(child.view)
-            child.didMove(toParent: root)
-            child.view.alpha = 1
-        }, completion: nil)
+    
+    func presentImagePicker() {
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
+extension BaseViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        guard let image = info[.originalImage] as? UIImage else { return }
     }
     
-    func remove() {
-        guard parent != nil else {
-            return
-        }
-        
-        UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
-            self.view.alpha = 0
-        }, completion: { _ in
-            self.willMove(toParent: nil)
-            self.removeFromParent()
-            self.view.removeFromSuperview()
-        })
-    }
 }

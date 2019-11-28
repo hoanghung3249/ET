@@ -9,81 +9,69 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import AVFoundation
-import Photos
-import Vision
 
 class CameraViewController: BaseViewController {
-    @IBOutlet weak var vwLanguage: LanguageView!
-    @IBOutlet weak var capturePreviewView: UIView!
-    @IBOutlet weak var captureButton: UIButton!
-    @IBOutlet weak var switchCameras: UIButton!
-    @IBOutlet weak var toggleFlashButton: UIButton!
     @IBOutlet weak var backView: UIButton!
-    let camera = CameraManager()
-    var requests = [VNRequest]()
+    @IBOutlet weak var previewVw: UIView!
+    @IBOutlet weak var captureButton: UIButton!
+    @IBOutlet weak var selectPhotoButton: UIButton!
+    @IBOutlet weak var toggleFlashButton: UIButton!
+    @IBOutlet weak var swapCameraButton: UIButton!
+    var viewModel = CameraViewModel()
     
-    override func configuration() {
-        captureButton.toCicle()
-        setupLanguageView()
-        configureCameraController()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.setupCamera(in: previewVw)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.stopRunningCamera()
+    }
+    
+    override func bindingViewModel() {
+        bindCommonAction(viewModel)
+        
+        viewModel.isFlashOn.asDriver()
+            .drive(onNext: { [weak self] (isOn) in
+                guard let self = self else { return }
+                self.toggleFlashButton.setImage(isOn ? #imageLiteral(resourceName: "FlashOnIcon") : #imageLiteral(resourceName: "FlashOffIcon"), for: .normal)
+            }).disposed(by: disposeBag)
     }
     
     override func observeSignal() {
         
+        captureButton.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.viewModel.camera.capturePhoto()
+            }).disposed(by: disposeBag)
+        
         backView.rx.tap.asObservable()
             .subscribe(onNext: { [weak self](_) in
                 guard let self = self else { return }
-                self.remove()
-//                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+            }).disposed(by: disposeBag)
+        
+        selectPhotoButton.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                // Open photo library
+                self.presentImagePicker()
             }).disposed(by: disposeBag)
         
         toggleFlashButton.rx.tap.asObservable()
-            .subscribe(onNext: { [weak self](_) in
+            .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
-                if self.camera.flashMode == .on {
-                    self.camera.flashMode = .off
-                    self.toggleFlashButton.setImage(#imageLiteral(resourceName: "FlashOffIcon"), for: .normal)
-                } else {
-                    self.camera.flashMode = .on
-                    self.toggleFlashButton.setImage(#imageLiteral(resourceName: "FlashOnIcon"), for: .normal)
-                }
+                self.viewModel.isFlashOn.accept(!(self.viewModel.isFlashOn.value))
             }).disposed(by: disposeBag)
         
-        captureButton.rx.tap.asObservable()
-            .subscribe(onNext: { [weak self](_) in
+        swapCameraButton.rx.tap.asObservable()
+            .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
-                self.camera.captureImage { [weak self](image, error) in
-                    guard let _ = self,let image = image else {
-                        print(error ?? "Image capture error")
-                        return
-                    }
-                    try? PHPhotoLibrary.shared().performChangesAndWait {
-                        print(image)
-                        PHAssetChangeRequest.creationRequestForAsset(from: image)
-                    }
-                }
+                self.viewModel.camera.swapCamera()
             }).disposed(by: disposeBag)
     }
 }
 
-// MARK: - Support method
-private extension CameraViewController {
-    
-    func setupLanguageView() {
-        vwLanguage.vwSuper.backgroundColor = .clear
-        vwLanguage.lblFromLanguage.textColor = .white
-        vwLanguage.lblToLanguage.textColor = .white
-        vwLanguage.imgReverse.image = UIImage(named: "reverse@2x")
-    }
-    
-    func configureCameraController() {
-        camera.prepare { [weak self] (error) in
-            guard let self = self else { return }
-            if let error = error {
-                print(error)
-            }
-            try? self.camera.displayPreview(on: self.capturePreviewView)
-        }
-    }
-}
+

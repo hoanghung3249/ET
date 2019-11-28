@@ -94,4 +94,8 @@ extension BaseViewModel {
         guard let model = TranslationManager.shared.loadLanguage(for: type) else { return nil }
         return model
     }
+    
+    func detectText(from image: UIImage) {
+        
+    }
 }

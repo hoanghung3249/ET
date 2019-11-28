@@ -11,6 +11,7 @@ import UIKit
 
 struct ETStoryboard {
     
-    static let main = UIStoryboard(name: "Main", bundle: nil)
-    static let home = UIStoryboard(name: "Home", bundle: nil)
+    static let main   = UIStoryboard(name: "Main", bundle: nil)
+    static let home   = UIStoryboard(name: "Home", bundle: nil)
+    static let camera = UIStoryboard(name: "Camera", bundle: nil)
 }

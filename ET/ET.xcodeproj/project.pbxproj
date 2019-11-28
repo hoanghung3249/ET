@@ -38,6 +38,9 @@
 		0EB1AA53237524EE00EF0FFE /* ListLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA52237524EE00EF0FFE /* ListLanguageCell.swift */; };
 		0EB1AA552375250100EF0FFE /* ListLanguageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1AA542375250100EF0FFE /* ListLanguageCell.xib */; };
 		0EB1AA5823795F3800EF0FFE /* TranslateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1AA5723795F3800EF0FFE /* TranslateModel.swift */; };
+		0EB6DED3238E229300A4FF2A /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6DED2238E229300A4FF2A /* CameraManager.swift */; };
+		0EB6DED6238E2DAB00A4FF2A /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6DED5238E2DAB00A4FF2A /* CameraViewModel.swift */; };
+		0EB6DED8238E7E1B00A4FF2A /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6DED7238E7E1B00A4FF2A /* UIViewControllerExtensions.swift */; };
 		0EE9A04D23694B4600736A8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A04C23694B4600736A8E /* AppDelegate.swift */; };
 		0EE9A04F23694B4600736A8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A04E23694B4600736A8E /* SceneDelegate.swift */; };
 		0EE9A05423694B4600736A8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EE9A05223694B4600736A8E /* Main.storyboard */; };
@@ -59,8 +62,9 @@
 		0EE9A08E2369847000736A8E /* ETStoryboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08D2369847000736A8E /* ETStoryboards.swift */; };
 		0EE9A0902369856400736A8E /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9A08F2369856400736A8E /* Operators.swift */; };
 		341FB8BC6EB47A229DB08D38 /* Pods_ET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D2AE4299A2CDB2889076CA /* Pods_ET.framework */; };
+		B7A10625238CC87B00BE07E3 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A10624238CC87B00BE07E3 /* Camera.storyboard */; };
+		B7A10628238CDC3D00BE07E3 /* CameraSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A10627238CDC3D00BE07E3 /* CameraSettingsViewController.swift */; };
 		B7AA87B8238BAFE00086B7EF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA87B7238BAFE00086B7EF /* CameraViewController.swift */; };
-		B7AA87BE238BBEB70086B7EF /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA87BD238BBEB70086B7EF /* CameraManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +100,9 @@
 		0EB1AA52237524EE00EF0FFE /* ListLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLanguageCell.swift; sourceTree = "<group>"; };
 		0EB1AA542375250100EF0FFE /* ListLanguageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListLanguageCell.xib; sourceTree = "<group>"; };
 		0EB1AA5723795F3800EF0FFE /* TranslateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateModel.swift; sourceTree = "<group>"; };
+		0EB6DED2238E229300A4FF2A /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		0EB6DED5238E2DAB00A4FF2A /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		0EB6DED7238E7E1B00A4FF2A /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		0EE9A04923694B4600736A8E /* ET.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ET.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EE9A04C23694B4600736A8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EE9A04E23694B4600736A8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,8 +127,9 @@
 		0EE9A08F2369856400736A8E /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		470AAD1E3AC6338349326CDF /* Pods-ET.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ET.debug.xcconfig"; path = "Target Support Files/Pods-ET/Pods-ET.debug.xcconfig"; sourceTree = "<group>"; };
 		8DFD025B8D73F9B7D93A4270 /* Pods-ET.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ET.release.xcconfig"; path = "Target Support Files/Pods-ET/Pods-ET.release.xcconfig"; sourceTree = "<group>"; };
+		B7A10624238CC87B00BE07E3 /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
+		B7A10627238CDC3D00BE07E3 /* CameraSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSettingsViewController.swift; sourceTree = "<group>"; };
 		B7AA87B7238BAFE00086B7EF /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		B7AA87BD238BBEB70086B7EF /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		F6D2AE4299A2CDB2889076CA /* Pods_ET.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ET.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -288,6 +296,14 @@
 			path = TranslateModel;
 			sourceTree = "<group>";
 		};
+		0EB6DED4238E2D9C00A4FF2A /* CameraViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0EB6DED5238E2DAB00A4FF2A /* CameraViewModel.swift */,
+			);
+			path = CameraViewModel;
+			sourceTree = "<group>";
+		};
 		0EE9A04023694B4600736A8E = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +344,7 @@
 		0EE9A0602369751A00736A8E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B7A10626238CDC2200BE07E3 /* CameraSettingsViewController */,
 				B7AA87B6238BAFC80086B7EF /* CameraViewController */,
 				0EE9A08223697F9500736A8E /* SettingViewController */,
 				0EE9A08123697F8D00736A8E /* HistoryViewController */,
@@ -353,6 +370,7 @@
 		0EE9A0622369753500736A8E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0EB6DED4238E2D9C00A4FF2A /* CameraViewModel */,
 				0EB1AA01236FFBBD00EF0FFE /* SettingsViewModel */,
 				0EB1A9FE236FFACD00EF0FFE /* HistoryViewModel */,
 				0EB1A9FB236FFA9C00EF0FFE /* TranslateViewModel */,
@@ -374,6 +392,7 @@
 		0EE9A0642369755E00736A8E /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				B7232609238CC6D100C91979 /* Camera */,
 				0EE9A0662369758F00736A8E /* Main */,
 			);
 			path = Storyboards;
@@ -430,6 +449,7 @@
 				0EE9A07823697A6B00736A8E /* UIViewExtensions.swift */,
 				0EB1AA3C237402FD00EF0FFE /* ExtensionsData.swift */,
 				0EB1AA3E2374036100EF0FFE /* ExtensionDictionary.swift */,
+				0EB6DED7238E7E1B00A4FF2A /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -513,6 +533,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B7232609238CC6D100C91979 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				B7A10624238CC87B00BE07E3 /* Camera.storyboard */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		B7A10626238CDC2200BE07E3 /* CameraSettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B7A10627238CDC3D00BE07E3 /* CameraSettingsViewController.swift */,
+			);
+			path = CameraSettingsViewController;
+			sourceTree = "<group>";
+		};
 		B7AA87B6238BAFC80086B7EF /* CameraViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,7 +560,7 @@
 		B7AA87BC238BBDE30086B7EF /* CameraManager */ = {
 			isa = PBXGroup;
 			children = (
-				B7AA87BD238BBEB70086B7EF /* CameraManager.swift */,
+				0EB6DED2238E229300A4FF2A /* CameraManager.swift */,
 			);
 			path = CameraManager;
 			sourceTree = "<group>";
@@ -607,6 +643,7 @@
 				0EE9A05623694B4A00736A8E /* Assets.xcassets in Resources */,
 				0EE9A05423694B4600736A8E /* Main.storyboard in Resources */,
 				0EB1AA552375250100EF0FFE /* ListLanguageCell.xib in Resources */,
+				B7A10625238CC87B00BE07E3 /* Camera.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,6 +700,7 @@
 				0EE9A070236977A800736A8E /* CollectionExtensions.swift in Sources */,
 				0EE9A07E23697E9A00736A8E /* Color.swift in Sources */,
 				0EE9A06D2369774900736A8E /* BaseViewModel.swift in Sources */,
+				0EB6DED6238E2DAB00A4FF2A /* CameraViewModel.swift in Sources */,
 				0EB1AA1123714F2600EF0FFE /* LanguageView.swift in Sources */,
 				0EB1A9FD236FFAB100EF0FFE /* TranslateViewModel.swift in Sources */,
 				0EB1AA5823795F3800EF0FFE /* TranslateModel.swift in Sources */,
@@ -674,9 +712,11 @@
 				0EB1AA262371535000EF0FFE /* DPDUIView+Extension.swift in Sources */,
 				0EE9A08E2369847000736A8E /* ETStoryboards.swift in Sources */,
 				0EE9A06A2369771000736A8E /* BaseViewController.swift in Sources */,
+				0EB6DED8238E7E1B00A4FF2A /* UIViewControllerExtensions.swift in Sources */,
 				0EE9A0742369781700736A8E /* ActivityIndicator.swift in Sources */,
 				0EE9A0772369792900736A8E /* ProgressView.swift in Sources */,
 				0EB1AA242371535000EF0FFE /* DPDKeyboardListener.swift in Sources */,
+				0EB6DED3238E229300A4FF2A /* CameraManager.swift in Sources */,
 				0EB1AA412374079B00EF0FFE /* DataModel.swift in Sources */,
 				0EE9A08A2369806400736A8E /* TabbarViewController.swift in Sources */,
 				0EB1AA392373FE5200EF0FFE /* ETServiceAPI.swift in Sources */,
@@ -691,8 +731,8 @@
 				0EB1AA442374089500EF0FFE /* LanguageModel.swift in Sources */,
 				0EE9A07923697A6C00736A8E /* UIViewExtensions.swift in Sources */,
 				0E067944237AB48D000388B7 /* DataManager.swift in Sources */,
+				B7A10628238CDC3D00BE07E3 /* CameraSettingsViewController.swift in Sources */,
 				B7AA87B8238BAFE00086B7EF /* CameraViewController.swift in Sources */,
-				B7AA87BE238BBEB70086B7EF /* CameraManager.swift in Sources */,
 				0EE9A08C2369845200736A8E /* Reusable.swift in Sources */,
 				0EB1AA03236FFBD200EF0FFE /* SettingsViewModel.swift in Sources */,
 				0EE9A04F23694B4600736A8E /* SceneDelegate.swift in Sources */,
@@ -849,14 +889,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 533G42X52A;
+				DEVELOPMENT_TEAM = V8TYH3YHPH;
 				INFOPLIST_FILE = ET/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hungnguyens.ETS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hungnguyens.ET;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -871,14 +911,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 533G42X52A;
+				DEVELOPMENT_TEAM = V8TYH3YHPH;
 				INFOPLIST_FILE = ET/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hungnguyens.ETS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hungnguyens.ET;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
