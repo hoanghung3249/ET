@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import AVFoundation
 import RxSwift
+import DeviceKit
 
 class CameraManager: NSObject {
     
@@ -39,7 +40,11 @@ class CameraManager: NSObject {
     
     private func setupCaptureSession() {
         captureSession = AVCaptureSession()
-        captureSession.sessionPreset = .high
+        if Device.current.isOneOf([.iPhone5, .iPhone6, .iPhone6Plus, .iPhone6sPlus, .iPhone6s]) {
+            captureSession.sessionPreset = .medium
+        } else {
+            captureSession.sessionPreset = .high
+        }
         
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video) else {
             print("Unable to access back camera!")
