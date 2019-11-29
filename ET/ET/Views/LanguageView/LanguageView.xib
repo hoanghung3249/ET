@@ -36,11 +36,11 @@
                     <rect key="frame" x="20" y="47" width="204.5" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mm5-Zc-dGw">
-                            <rect key="frame" x="15" y="9" width="149.5" height="22"/>
+                            <rect key="frame" x="5" y="9" width="159.5" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="7BE-fk-KQc"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -63,7 +63,7 @@
                         <constraint firstItem="33D-yF-fhg" firstAttribute="leading" secondItem="t1C-dV-Szy" secondAttribute="leading" id="ZXl-ks-hUI"/>
                         <constraint firstAttribute="trailing" secondItem="33D-yF-fhg" secondAttribute="trailing" id="cT2-WE-eMQ"/>
                         <constraint firstItem="xVE-ui-C1b" firstAttribute="leading" secondItem="mm5-Zc-dGw" secondAttribute="trailing" constant="5" id="nJd-0a-dXf"/>
-                        <constraint firstItem="mm5-Zc-dGw" firstAttribute="leading" secondItem="t1C-dV-Szy" secondAttribute="leading" constant="15" id="qsM-w8-jKg"/>
+                        <constraint firstItem="mm5-Zc-dGw" firstAttribute="leading" secondItem="t1C-dV-Szy" secondAttribute="leading" constant="5" id="qsM-w8-jKg"/>
                         <constraint firstItem="xVE-ui-C1b" firstAttribute="centerY" secondItem="t1C-dV-Szy" secondAttribute="centerY" id="yPG-ep-spX"/>
                         <constraint firstAttribute="bottom" secondItem="33D-yF-fhg" secondAttribute="bottom" id="ze1-fU-QvO"/>
                     </constraints>
@@ -72,11 +72,11 @@
                     <rect key="frame" x="284.5" y="47" width="204.5" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdp-7v-5Qm">
-                            <rect key="frame" x="15" y="9" width="149.5" height="22"/>
+                            <rect key="frame" x="5" y="9" width="159.5" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="LXw-FJ-871"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -100,7 +100,7 @@
                         <constraint firstAttribute="trailing" secondItem="3RV-0K-a5y" secondAttribute="trailing" id="KGI-Sa-T4u"/>
                         <constraint firstItem="jQM-95-d1t" firstAttribute="leading" secondItem="Mdp-7v-5Qm" secondAttribute="trailing" constant="5" id="OKi-yV-8yf"/>
                         <constraint firstItem="Mdp-7v-5Qm" firstAttribute="centerY" secondItem="JgB-E2-2MG" secondAttribute="centerY" id="UjI-ff-LKC"/>
-                        <constraint firstItem="Mdp-7v-5Qm" firstAttribute="leading" secondItem="JgB-E2-2MG" secondAttribute="leading" constant="15" id="cTi-qa-qCp"/>
+                        <constraint firstItem="Mdp-7v-5Qm" firstAttribute="leading" secondItem="JgB-E2-2MG" secondAttribute="leading" constant="5" id="cTi-qa-qCp"/>
                         <constraint firstAttribute="height" constant="40" id="cnE-KD-sUL"/>
                         <constraint firstItem="jQM-95-d1t" firstAttribute="centerY" secondItem="JgB-E2-2MG" secondAttribute="centerY" id="dPo-b1-3Ho"/>
                     </constraints>
