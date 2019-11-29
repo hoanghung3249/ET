@@ -222,7 +222,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyi-Js-ocU">
-                                        <rect key="frame" x="15" y="5" width="50" height="50"/>
+                                        <rect key="frame" x="15" y="10" width="50" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="0Ya-zi-uf3"/>
                                         </constraints>
@@ -243,8 +243,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="xyi-Js-ocU" firstAttribute="leading" secondItem="Ogw-tA-SLk" secondAttribute="leading" constant="15" id="2fn-QF-RpZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="xyi-Js-ocU" secondAttribute="bottom" constant="5" id="EbE-Pd-DZs"/>
-                                    <constraint firstItem="xyi-Js-ocU" firstAttribute="top" secondItem="Ogw-tA-SLk" secondAttribute="top" constant="5" id="RIW-TM-yfx"/>
+                                    <constraint firstAttribute="bottom" secondItem="xyi-Js-ocU" secondAttribute="bottom" constant="10" id="EbE-Pd-DZs"/>
+                                    <constraint firstItem="xyi-Js-ocU" firstAttribute="top" secondItem="Ogw-tA-SLk" secondAttribute="top" constant="10" id="RIW-TM-yfx"/>
                                     <constraint firstAttribute="trailing" secondItem="Be3-jV-klS" secondAttribute="trailing" constant="15" id="Sm7-19-aO1"/>
                                     <constraint firstAttribute="height" constant="60" id="T4G-ha-Hej"/>
                                     <constraint firstAttribute="bottom" secondItem="Be3-jV-klS" secondAttribute="bottom" constant="5" id="eVm-A3-8Jf"/>
@@ -387,10 +387,10 @@
         <image name="delete" width="21.333333969116211" height="21.333333969116211"/>
         <image name="history" width="32" height="32"/>
         <image name="picture" width="24" height="24"/>
-        <image name="return-button" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="return-button" width="42.666667938232422" height="42.666667938232422"/>
         <image name="settings" width="32" height="32"/>
         <image name="speaker" width="21.333333969116211" height="21.333333969116211"/>
         <image name="subtitles" width="32" height="32"/>
-        <image name="switch" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="switch" width="42.666667938232422" height="42.666667938232422"/>
     </resources>
 </document>
