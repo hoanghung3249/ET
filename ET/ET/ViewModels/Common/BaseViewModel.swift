@@ -20,6 +20,7 @@ class BaseViewModel {
     let didRequestError = BehaviorRelay<Error?>(value: nil)
     let fromLanguageBehavior = BehaviorRelay<String>(value: "")
     let toLanguageBehavior = BehaviorRelay<String>(value: "")
+    let swapLanguageBehavior = PublishRelay<Void>()
     
     // MARK: - Init BaseViewModel
     init() {

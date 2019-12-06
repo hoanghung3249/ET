@@ -26,7 +26,9 @@ class TranslateViewController: BaseViewController {
     
     override func bindingViewModel() {
         bindCommonAction(viewModel)
-        txvFromLanguage.rx.text.bind(to: viewModel.translateText).disposed(by: disposeBag)
+//        txvFromLanguage.rx.text.bind(to: viewModel.translateText).disposed(by: disposeBag)
+        
+        (txvFromLanguage.rx.text <-> viewModel.translateText).disposed(by: disposeBag)
         
         viewModel.selectLanguageView.selectedLanguage.bind(to: vwLanguage.selectedLanguage).disposed(by: disposeBag)
         
@@ -35,6 +37,8 @@ class TranslateViewController: BaseViewController {
                 guard let self = self else { return }
                 self.viewModel.translateModel = model
             }).disposed(by: disposeBag)
+        
+        vwLanguage.swapLanguageBehavior.bind(to: viewModel.swapLanguageBehavior).disposed(by: disposeBag)
         
         viewModel.finalText.asDriver()
             .drive(onNext: { [weak self] (finalText) in

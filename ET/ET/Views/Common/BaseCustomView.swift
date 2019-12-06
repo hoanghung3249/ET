@@ -12,5 +12,9 @@ import RxSwift
 import RxCocoa
 
 class BaseCustomView: UIView {
+    let swapLanguageBehavior = PublishRelay<Void>()
+    
     let disposed = DisposeBag()
+    
+    func configure() { }
 }

@@ -19,6 +19,12 @@ class TranslateViewModel: BaseViewModel {
     
     override init() {
         super.init()
+        
+        swapLanguageBehavior.asObservable().subscribe(onNext: { [weak self] () in
+            guard let self = self else { return }
+            self.firstSetupLanguage()
+            self.swapText()
+        }).disposed(by: disposeBag)
     }
     
     func loadSelectLanguageView(in view: UIView, _ seletedIndex: Int, _ selectedLanguage: LanguageModel) {
@@ -45,5 +51,14 @@ class TranslateViewModel: BaseViewModel {
                 guard let self = self else { return }
                 self.requestError(error)
             }).disposed(by: disposeBag)
+    }
+    
+    func swapText() {
+        let sourceText = translateText.value ?? ""
+        let targetText = finalText.value
+        
+        // Swap Text
+        translateText.accept(targetText)
+        finalText.accept(sourceText)
     }
 }

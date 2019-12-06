@@ -20,6 +20,7 @@ class LanguageView: BaseCustomView {
     @IBOutlet weak var lblToLanguage: UILabel!
     @IBOutlet weak var btnSelectFromLg: UIButton!
     @IBOutlet weak var btnSelectToLg: UIButton!
+    @IBOutlet weak var swapLanguageImg: UIImageView!
     
     /*
      1: From Language
@@ -36,6 +37,7 @@ class LanguageView: BaseCustomView {
         loadViewFromNib()
         observeSignal()
         bindData()
+        configure()
     }
     
     override init(frame: CGRect) {
@@ -43,6 +45,12 @@ class LanguageView: BaseCustomView {
         loadViewFromNib()
         observeSignal()
         bindData()
+        configure()
+    }
+    
+    override func configure() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(swapLanguage))
+        swapLanguageImg.addGestureRecognizer(tapGesture)
     }
     
     func bindData() {
@@ -61,13 +69,13 @@ class LanguageView: BaseCustomView {
             guard let self = self else { return }
             TranslationManager.shared.saveLanguage(type: .fromLanguage(self.getLanguageModel(name) ?? LanguageModel("English", "en")))
             self.lblFromLanguage.text = name
-            }).disposed(by: disposed)
-
+        }).disposed(by: disposed)
+        
         toLanguageBehavior.asObservable().subscribe(onNext: { [weak self] (name) in
             guard let self = self else { return }
             TranslationManager.shared.saveLanguage(type: .toLanguage(self.getLanguageModel(name) ?? LanguageModel("English", "en")))
             self.lblToLanguage.text = name
-            }).disposed(by: disposed)
+        }).disposed(by: disposed)
         
         Observable.combineLatest(fromLanguageBehavior.asObservable(), toLanguageBehavior.asObservable()) { [weak self] (fromLng, toLng) -> (TranslateModel) in
             guard let self = self else { return TranslateModel() }
@@ -75,7 +83,7 @@ class LanguageView: BaseCustomView {
             translateModel.sourceLanguage = self.getLanguage(from: fromLng) ?? ""
             translateModel.target = self.getLanguage(from: toLng) ?? ""
             return translateModel
-            }.bind(to: translateModel).disposed(by: disposed)
+        }.bind(to: translateModel).disposed(by: disposed)
     }
     
     func observeSignal() {
@@ -94,6 +102,11 @@ class LanguageView: BaseCustomView {
             }).disposed(by: disposed)
     }
     
+    
+    @objc func swapLanguage() {
+        TranslationManager.shared.swapLanguage()
+        swapLanguageBehavior.accept(())
+    }
 }
 
 // MARK: - Support Method

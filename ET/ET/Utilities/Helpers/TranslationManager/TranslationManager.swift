@@ -74,4 +74,15 @@ class TranslationManager {
         return LanguageModel(JSON: params)
     }
     
+    func swapLanguage() {
+        // Get language
+        let fromLanguageDic = DataManager.shared.getData(for: UserDefaultKey.fromLanguage.key)
+        let fromLanguage = LanguageModel(JSON: fromLanguageDic ?? [:])
+        let toLanguageDic = DataManager.shared.getData(for: UserDefaultKey.toLanguage.key)
+        let toLanguage = LanguageModel(JSON: toLanguageDic ?? [:])
+        
+        // Swap language
+        saveLanguage(type: .fromLanguage(toLanguage ?? LanguageModel("English", "en")))
+        saveLanguage(type: .toLanguage(fromLanguage ?? LanguageModel("English", "en")))
+    }
 }
