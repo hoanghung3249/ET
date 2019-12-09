@@ -13,6 +13,7 @@ target 'ET' do
   pod 'IQKeyboardManagerSwift'
   pod 'NVActivityIndicatorView'
   pod 'CameraKit-iOS'
+  pod 'Firebase/Analytics'
 
 
 end

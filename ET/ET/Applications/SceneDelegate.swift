@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Firebase
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -58,6 +59,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Setup keyboard manager
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
+        // Config Firebase
+        if FirebaseApp.app() == nil {
+            FirebaseConfiguration.shared.setLoggerLevel(.min)
+            FirebaseApp.configure()
+        }
     }
 
 }

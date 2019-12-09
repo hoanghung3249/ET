@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -57,6 +58,12 @@ private extension AppDelegate {
         // Setup keyboard manager
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
+        // Config Firebase
+        if FirebaseApp.app() == nil {
+            FirebaseConfiguration.shared.setLoggerLevel(.min)
+            FirebaseApp.configure()
+        }
     }
     
     func setupView(_ window: UIWindow?) {
